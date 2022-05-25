@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -44,6 +45,16 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        $roles = Role::withCount('users')->get();
+        $administratorRole = $roles->firstWhere('name', 'Administrator');
+        $userRole = $roles->firstWhere('name', 'User');
+
+        if ($administratorRole->users_count > 0) {
+            $user->roles()->attach($userRole->id);
+        } else {
+            $user->roles()->attach($administratorRole->id);
+        }
 
         event(new Registered($user));
 
