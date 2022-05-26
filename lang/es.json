@@ -750,5 +750,8 @@
     "Åland Islands": "Islas Åland",
     "User": "Usuario",
     "Guest": "Invitado",
-    "Super Administrator": "Super Administrador"
+    "Super Administrator": "Super Administrador",
+    "Roles management": "Gestión de roles",
+    "Established role": "Rol establecido",
+    "Role removed": "Rol eliminado"
 }
