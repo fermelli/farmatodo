@@ -17,18 +17,19 @@ class UserSeeder extends Seeder
     public function run()
     {
         $roles = Role::all();
-        $administratorRole = $roles->firstWhere('name', 'Administrator');
+        $superAdministratorRole = $roles->firstWhere('name', 'Super Administrator');
         $userRole = $roles->firstWhere('name', 'User');
+        $guestRole = $roles->firstWhere('name', 'Guest');
 
         User::factory()
-            ->hasAttached($administratorRole)
+            ->hasAttached([$superAdministratorRole, $guestRole])
             ->create([
                 'name' => 'Testeo Test',
                 'email' => 'testeo.test.55@gmail.com',
             ]);
 
-        User::factory()->count(10)
-            ->hasAttached($userRole)
+        User::factory()->count(30)
+            ->hasAttached([$userRole, $guestRole])
             ->create();
     }
 }

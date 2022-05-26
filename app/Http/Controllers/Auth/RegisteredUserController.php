@@ -47,13 +47,14 @@ class RegisteredUserController extends Controller
         ]);
 
         $roles = Role::withCount('users')->get();
-        $administratorRole = $roles->firstWhere('name', 'Administrator');
+        $superAdministratorRole = $roles->firstWhere('name', 'Super Administrator');
         $userRole = $roles->firstWhere('name', 'User');
+        $guestRole = $roles->firstWhere('name', 'Guest');
 
-        if ($administratorRole->users_count > 0) {
-            $user->roles()->attach($userRole->id);
+        if ($superAdministratorRole->users_count > 0) {
+            $user->roles()->attach([$userRole->id, $guestRole->id]);
         } else {
-            $user->roles()->attach($administratorRole->id);
+            $user->roles()->attach([$superAdministratorRole->id, $guestRole->id]);
         }
 
         event(new Registered($user));
