@@ -754,5 +754,10 @@
     "Roles management": "Gestión de roles",
     "Established role": "Rol establecido",
     "Role removed": "Rol eliminado",
-    "This action is unauthorized.": "Esta acción no está autorizada."
+    "This action is unauthorized.": "Esta acción no está autorizada.",
+    "Products": "Productos",
+    "Edit product": "Editar producto",
+    "Show product": "Mostrar producto",
+    "Add New Product": "Agregar nuevo producto",
+    "Create new product": "Crear nuevo producto"
 }

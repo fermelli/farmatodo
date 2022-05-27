@@ -20,6 +20,11 @@
                             {{ __('Roles management') }}
                         </x-nav-link>
                     @endcan
+                    @can('is-super-administrator-or-administrator')
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                        {{ __('Products') }}
+                    </x-nav-link>
+                @endcan
                 </div>
             </div>
 
