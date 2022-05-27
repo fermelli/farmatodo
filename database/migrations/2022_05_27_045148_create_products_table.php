@@ -18,9 +18,9 @@ return new class extends Migration
             $table-> String('name',48);
             $table-> String('type',48);
             $table-> String('brand',48);
-            $table->integer('quantity'); 
-            $table->decimal('price',8,3);
-            $table->timestamps();
+            $table-> Integer('quantity'); 
+            $table-> decimal('price',8,3);
+            $table-> timestamps();
         });
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Roles\RoleUserController;
 use App\Http\Controllers\Roles\RoleViewController;
 use App\Http\Controllers\Roles\RolesController;
@@ -25,6 +26,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::resource('products', ProductController::class);
 
 // ROLES
 Route::middleware(['auth', 'verified', 'can:is-super-administrator'])->group(function () {
