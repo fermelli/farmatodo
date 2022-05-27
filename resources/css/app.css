@@ -1,3 +1,22 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer components {
+    .table {
+        @apply border-collapse;
+    }
+
+    .table thead th {
+        @apply py-2 px-4 bg-cyan-900 text-white;
+    }
+
+    .table td,
+    .table tbody th {
+        @apply border-y border-y-slate-500 py-2 px-4;
+    }
+
+    .spinner {
+        @apply w-16 h-16 mx-auto animate-spin rounded-full border-4 border-slate-500 border-l-transparent;
+    }
+}
