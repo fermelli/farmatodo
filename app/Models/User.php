@@ -51,6 +51,11 @@ class User extends Authenticatable implements MustVerifyEmail
             ->withTimestamps();
     }
 
+    public function isSuperAdministrator()
+    {
+        return $this->roles()->where('name', 'Super Administrator')->exists();
+    }
+
     public function isAdministrator()
     {
         return $this->roles()->where('name', 'Administrator')->exists();

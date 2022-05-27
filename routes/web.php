@@ -24,7 +24,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    // ROLES
+});
+
+// ROLES
+Route::middleware(['auth', 'verified', 'can:is-super-administrator'])->group(function () {
     Route::get('/roles/management', RoleViewController::class)->name('roles.management');
     Route::get('/roles', [RolesController::class, 'index'])->name('roles.index');
     Route::get('/users/roles', [RoleUserController::class, 'index'])->name('users.roles');
