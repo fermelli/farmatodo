@@ -18,14 +18,23 @@ class RoleUserController extends Controller
 
     public function store(User $user, Role $role)
     {
-        if ($role->name != 'Guest') {
-            $user->roles()->attach($role->id);
+        $partialData = [
+            'user' => $user,
+            'role' => $role,
+        ];
+
+        if ($user->roles()->find($role->id)) {
             return response()->json([
-                'message' => __('Established role') . ': ' . __($role->name),
-                'user' => $user,
-                'role' => $role
-            ], 201);
+                'message' => 'Rol ' . __($role->name) . ' ya esta establecido',
+                ...$partialData
+            ], 400);
         }
+
+        $user->roles()->attach($role->id);
+        return response()->json([
+            'message' => __('Established role') . ': ' . __($role->name),
+            ...$partialData
+        ], 201);
     }
 
     /**
@@ -70,11 +79,28 @@ class RoleUserController extends Controller
      */
     public function destroy(User $user, Role $role)
     {
-        if ($role->name != 'Guest') {
+        $partialData = [
+            'user' => $user,
+            'role' => $role,
+        ];
+
+        if (!$user->roles()->find($role->id)) {
+            return response()->json([
+                'message' => 'Rol ' . __($role->name) . ' no esta establecido',
+                ...$partialData,
+            ], 400);
+        } else {
+            if ($role->name == 'Guest') {
+                return response()->json([
+                    'message' => 'Rol ' . __($role->name) . ' no se puede eliminar (rol por defecto)',
+                    ...$partialData,
+                ], 400);
+            }
+
             $user->roles()->detach($role->id);
             return response()->json([
                 'message' => __('Role removed') . ': ' . __($role->name),
-                'user' => $user,
+                ...$partialData,
             ], 200);
         }
     }
