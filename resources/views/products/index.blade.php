@@ -21,39 +21,39 @@
                     
                     @if ($message = Session::get('success'))
                         <div class="my-4 p-4 bg-green-200">
-                            <p>{{ $message }}</p>
+                            <p>{{ __($message) }}</p>
                         </div>
                     @endif
                     
                     <table class="table">
                         <tr>
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>type</th>
-                            <th>brand</th>
-                            <th>price</th>
-                            <th>quantity</th>
-                            <th width="280px">Action</th>
+                            <th>#</th>
+                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('Type') }}</th>
+                            <th>{{ __('Brand') }}</th>
+                            <th>{{ __('Price') }}</th>
+                            <th>{{ __('Quantity') }}</th>
+                            <th width="280px">{{ __('Action') }}</th>
                         </tr>
                         @foreach ($products as $product)
                         <tr>
-                            <td>{{ ++$i }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->type }}</td>
                             <td>{{ $product->brand }}</td>
                             <td>{{ $product->price }}</td>
-                            <td>{{ $product->quantity}}</td>
+                            <td>{{ $product->quantity }}</td>
                             <td>
                                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                     
-                                    <a class="inline-block px-4 py-2 border border-green-700 text-green-700" href="{{ route('products.show',$product->id) }}">Show</a>
+                                    <a class="inline-block p-2 my-2 border border-green-700 text-green-700" href="{{ route('products.show',$product->id) }}">{{  __('Show') }}</a>
                     
-                                    <a class="inline-block px-4 py-2 border border-blue-700 text-blue-700" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                                    <a class="inline-block p-2 my-2 border border-blue-700 text-blue-700" href="{{ route('products.edit',$product->id) }}">{{  __('Edit') }}</a>
                     
                                     @csrf
                                     @method('DELETE')
                       
-                                    <button type="submit" class="inline-block px-4 py-2 border border-red-700 text-red-700">Delete</button>
+                                    <button type="submit" class="inline-block p-2 my-2 border border-red-700 text-red-700">{{  __('Delete') }}</button>
                                 </form>
                             </td>
                         </tr>

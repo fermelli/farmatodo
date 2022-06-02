@@ -12,17 +12,17 @@
                     <div>
                         <div>
                             <div>
-                                <a class="inline-block px-4 py-2 my-4 bg-slate-600 text-white" href="{{ route('products.index') }}">Back</a>
+                                <a class="inline-block px-4 py-2 my-4 bg-slate-600 text-white" href="{{ route('products.index') }}">{{ __('Back') }}</a>
                             </div>
                         </div>
                     </div>
                        
                     @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <div class="bg-red-100 px-4 py-2">
+                            <span class="text-red-900 py-4"><strong>{{ __('Whoops!') }}</strong> {{ __('There were some problems with your input.') }}</span>
                             <ul>
                                 @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                    <li class="text-sm text-red-700">{{ $error }}</li>
                                 @endforeach
                             </ul>
                         </div>
@@ -35,30 +35,30 @@
                             <div>
                                 <x-label class="mt-4" for="name" :value="__('Name')" />
 
-                                <x-input id="name" class="block mt-1 w-full" type="text" name="name" placeholder="Name" required />
+                                <x-input id="name" class="block mt-1 w-full" type="text" name="name" placeholder="{{ __('Name') }}"  required/>
                             </div>
                             <div>
                                 <x-label class="mt-4" for="type" :value="__('Type')" />
 
-                                <x-input id="type" class="block mt-1 w-full" type="text" name="type" placeholder="Type" required />
+                                <x-input id="type" class="block mt-1 w-full" type="text" name="type" placeholder="{{ __('Type') }}"  required/>
                             </div>
                             <div>
                                 <x-label class="mt-4" for="brand" :value="__('Brand')" />
 
-                                <x-input id="brand" class="block mt-1 w-full" type="text" name="brand" placeholder="Brand" required />
+                                <x-input id="brand" class="block mt-1 w-full" type="text" name="brand" placeholder="{{ __('Brand') }}"  required/>
                             </div>
                             <div>
                                 <x-label class="mt-4" for="price" :value="__('Price')" />
 
-                                <x-input id="price" class="block mt-1 w-full" type="number" step="0.001" name="price" placeholder="0.0" required />
+                                <x-input id="price" class="block mt-1 w-full" type="number" step="0.001" name="price" placeholder="0.0"  required/>
                             </div>
                             <div>
                                 <x-label class="mt-4" for="quantity" :value="__('Quantity')" />
 
-                                <x-input id="quantity" class="block mt-1 w-full" type="number" step="1" name="quantity" placeholder="0" required />
+                                <x-input id="quantity" class="block mt-1 w-full" type="number" step="1" name="quantity" placeholder="0"  required/>
                             </div>
                             <div>
-                                    <button type="submit" class="px-4 py-2 my-4 bg-blue-600 text-white">Submit</button>
+                                    <button type="submit" class="px-4 py-2 my-4 bg-blue-600 text-white">{{ __('Submit') }}</button>
                             </div>
                         </div>
                        

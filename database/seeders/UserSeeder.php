@@ -18,18 +18,48 @@ class UserSeeder extends Seeder
     {
         $roles = Role::all();
         $superAdministratorRole = $roles->firstWhere('name', 'Super Administrator');
+        $administratorRole = $roles->firstWhere('name', 'Administrator');
         $userRole = $roles->firstWhere('name', 'User');
         $guestRole = $roles->firstWhere('name', 'Guest');
 
         User::factory()
-            ->hasAttached([$superAdministratorRole, $guestRole])
+            ->hasAttached($superAdministratorRole)
             ->create([
                 'name' => 'Testeo Test',
                 'email' => 'testeo.test.55@gmail.com',
             ]);
 
-        User::factory()->count(30)
+        User::factory()
+            ->hasAttached([$administratorRole, $userRole, $guestRole])
+            ->create([
+                'name' => 'No Super Admin',
+                'email' => 'no.super.admin@email.com',
+            ]);
+
+        User::factory()->count(8)
+            ->hasAttached([$administratorRole, $userRole, $guestRole])
+            ->create();
+
+        User::factory()
             ->hasAttached([$userRole, $guestRole])
+            ->create([
+                'name' => 'User User',
+                'email' => 'user.user@email.com',
+            ]);
+
+        User::factory()->count(29)
+            ->hasAttached([$userRole, $guestRole])
+            ->create();
+
+        User::factory()
+            ->hasAttached($guestRole)
+            ->create([
+                'name' => 'Guest User',
+                'email' => 'guest.user@email.com',
+            ]);
+
+        User::factory()->count(9)
+            ->hasAttached($guestRole)
             ->create();
     }
 }
