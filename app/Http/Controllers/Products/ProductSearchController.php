@@ -29,11 +29,34 @@ class ProductSearchController extends Controller
     {
         $search = $request->query('search', '');
 
+        $categoriesIds = $request->query('categories_ids', []);
+
+        $selectedCategories = Category::whereIn('id', $categoriesIds)->get();
+
+        $additionalData = ['search' => $search, 'categories' => Category::all()];
+
+        if ($selectedCategories->count() > 0) {
+            $productsByCategory = $selectedCategories->mapWithKeys(function ($category) use ($search) {
+                return [$category['name'] => Product::where('category_id', $category->id)
+                    ->where(function ($query) use ($search) {
+                        $query->where('name', 'LIKE', "%$search%")
+                            ->orWhere('type', 'LIKE', "%$search%")
+                            ->orWhere('brand', 'LIKE', "%$search%");
+                    })->get()];
+            });
+
+            return view('products.search', [
+                'productsByCategory' => $productsByCategory,
+                'selectedCategories' => $selectedCategories,
+                ...$additionalData,
+            ]);
+        }
+
         $products = Product::where('name', 'LIKE', "%$search%")
             ->orWhere('type', 'LIKE', "%$search%")
             ->orWhere('brand', 'LIKE', "%$search%")
             ->with('category')->paginate(20);
 
-        return view('products.search', ['products' => $products, 'search' => $search]);
+        return view('products.search', ['products' => $products, ...$additionalData]);
     }
 }

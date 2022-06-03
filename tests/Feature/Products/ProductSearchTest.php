@@ -67,7 +67,7 @@ class ProductSearchTest extends TestCase
      *
      * @dataProvider providerProducts
      */
-    public function test_can_do_a_product_search_for($getData)
+    public function test_can_do_a_simple_product_search_for($getData)
     {
         [$product, $search] = $getData();
 
@@ -77,5 +77,65 @@ class ProductSearchTest extends TestCase
             ->assertSee($product->name)
             ->assertSee($product->brand)
             ->assertSee($product->price);
+    }
+
+    public function providerProductsForSearchWithCategory()
+    {
+        return [
+            'for name' => [
+                function () {
+                    $randomCategories = Category::all()->random(3);
+                    $products = [
+                        Product::factory()->for($randomCategories->get(0))->create(['name' => 'Producto #1']),
+                        Product::factory()->for($randomCategories->get(1))->create(['name' => 'Producto #2']),
+                        Product::factory()->for($randomCategories->get(2))->create(['name' => 'Producto #3']),
+                    ];
+                    return [$products, 'Producto'];
+                },
+            ],
+            'for type' => [
+                function () {
+                    $randomCategories = Category::all()->random(3);
+                    $products = [
+                        Product::factory()->for($randomCategories->get(0))->create(['type' => 'Type #1']),
+                        Product::factory()->for($randomCategories->get(1))->create(['type' => 'Type #2']),
+                        Product::factory()->for($randomCategories->get(2))->create(['type' => 'Type #3']),
+                    ];
+                    return [$products, 'Type'];
+                },
+            ],
+            'for brand' => [
+                function () {
+                    $randomCategories = Category::all()->random(3);
+                    $products = [
+                        Product::factory()->for($randomCategories->get(0))->create(['brand' => 'Brand #1']),
+                        Product::factory()->for($randomCategories->get(1))->create(['brand' => 'Brand #2']),
+                        Product::factory()->for($randomCategories->get(2))->create(['brand' => 'Brand #3']),
+                    ];
+                    return [$products, 'Brand'];
+                },
+            ],
+        ];
+    }
+
+    /**
+     * Test with data from dataProvider
+     *
+     * @dataProvider providerProductsForSearchWithCategory
+     */
+    public function test_can_do_a_product_search_by_categories($getData)
+    {
+        [$products, $search] = $getData();
+
+        $product1 = $products[0];
+        $product2 = $products[1];
+        $product3 = $products[2];
+
+        $response = $this->get(route('product-search', ['search' => $search]));
+
+        $response->assertStatus(200)
+            ->assertSee($product1->name)
+            ->assertSee($product2->name)
+            ->assertSee($product3->name);
     }
 }
