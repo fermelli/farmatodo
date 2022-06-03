@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Products;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -81,7 +82,14 @@ class ProductCrudTest extends TestCase
     {
         [$user, $status] = $getData();
 
+        $categories = Category::all();
+
         $response = $this->actingAs($user)->get(route('products.create'));
+
+        if ($status == 200) {
+            $response->assertStatus($status)
+                ->assertSee($categories->pluck('name')->toArray());
+        }
 
         $response->assertStatus($status);
     }
