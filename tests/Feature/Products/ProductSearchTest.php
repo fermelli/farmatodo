@@ -90,7 +90,7 @@ class ProductSearchTest extends TestCase
                         Product::factory()->for($randomCategories->get(1))->create(['name' => 'Producto #2']),
                         Product::factory()->for($randomCategories->get(2))->create(['name' => 'Producto #3']),
                     ];
-                    return [$products, 'Producto'];
+                    return [$products, 'Producto', $randomCategories->modelKeys()];
                 },
             ],
             'for type' => [
@@ -101,7 +101,7 @@ class ProductSearchTest extends TestCase
                         Product::factory()->for($randomCategories->get(1))->create(['type' => 'Type #2']),
                         Product::factory()->for($randomCategories->get(2))->create(['type' => 'Type #3']),
                     ];
-                    return [$products, 'Type'];
+                    return [$products, 'Type', $randomCategories->modelKeys()];
                 },
             ],
             'for brand' => [
@@ -112,7 +112,7 @@ class ProductSearchTest extends TestCase
                         Product::factory()->for($randomCategories->get(1))->create(['brand' => 'Brand #2']),
                         Product::factory()->for($randomCategories->get(2))->create(['brand' => 'Brand #3']),
                     ];
-                    return [$products, 'Brand'];
+                    return [$products, 'Brand', $randomCategories->modelKeys()];
                 },
             ],
         ];
@@ -125,17 +125,19 @@ class ProductSearchTest extends TestCase
      */
     public function test_can_do_a_product_search_by_categories($getData)
     {
-        [$products, $search] = $getData();
+        [$products, $search, $categoriesIds] = $getData();
 
         $product1 = $products[0];
         $product2 = $products[1];
         $product3 = $products[2];
 
-        $response = $this->get(route('product-search', ['search' => $search]));
+        $response = $this->get(route('product-search', ['search' => $search, 'categories_ids' => $categoriesIds]));
 
         $response->assertStatus(200)
             ->assertSee($product1->name)
             ->assertSee($product2->name)
-            ->assertSee($product3->name);
+            ->assertSee($product3->name)
+            ->assertSee($search)
+            ->assertSee($categoriesIds);
     }
 }
