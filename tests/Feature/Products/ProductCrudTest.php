@@ -173,6 +173,8 @@ class ProductCrudTest extends TestCase
 
         $product = Product::all()->random();
 
+        $categories = Category::all();
+
         $response = $this->actingAs($user)->get(
             route('products.edit', ['product' => $product->id])
         );
@@ -183,11 +185,13 @@ class ProductCrudTest extends TestCase
                 ->assertSee($product->type)
                 ->assertSee($product->brand)
                 ->assertSee($product->price)
-                ->assertSee($product->quantity);
+                ->assertSee($product->quantity)
+                ->assertSee($product->category_id)
+                ->assertSee($categories->pluck('name')->toArray());
         }
 
         if ($status == 403) {
-            $response->assertSee($status);
+            $response->assertStatus($status);
         }
     }
 
