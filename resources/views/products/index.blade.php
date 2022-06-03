@@ -33,6 +33,7 @@
                             <th>{{ __('Brand') }}</th>
                             <th>{{ __('Price') }}</th>
                             <th>{{ __('Quantity') }}</th>
+                            <th>{{ __('Category') }}</th>
                             <th width="280px">{{ __('Action') }}</th>
                         </tr>
                         @foreach ($products as $product)
@@ -43,6 +44,7 @@
                             <td>{{ $product->brand }}</td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->quantity }}</td>
+                            <td>{{ $product->category->name }}</td>
                             <td>
                                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                     

@@ -72,11 +72,11 @@ class ProductPaginationTest extends TestCase
 
         if ($status == 200) {
             $response->assertSee($status)
-                ->assertSee($products->get(0)->name)
-                ->assertSee($products->get(1)->name)
-                ->assertSee($products->get(2)->name)
-                ->assertSee($products->get(3)->name)
-                ->assertSee($products->get(4)->name);
+                ->assertSee([$products->get(0)->name, $products->get(0)->category->name])
+                ->assertSee([$products->get(1)->name, $products->get(1)->category->name])
+                ->assertSee([$products->get(2)->name, $products->get(2)->category->name])
+                ->assertSee([$products->get(3)->name, $products->get(3)->category->name])
+                ->assertSee([$products->get(4)->name, $products->get(4)->category->name]);
         }
 
         if ($status == 403) {
