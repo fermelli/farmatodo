@@ -100,6 +100,7 @@ class ProductController extends Controller
             'brand' => 'required',
             'price' => 'required',
             'quantity' => 'required',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $product->update($request->all());

@@ -206,9 +206,12 @@ class ProductCrudTest extends TestCase
 
         $productId = Product::all()->random()->id;
 
-        $updatedProduct = Product::factory()->make();
+        $category = Category::all()->random();
 
-        $response = $this->actingAs($user)->put(
+        $updatedProduct = Product::factory()->make();
+        $updatedProduct->category()->associate($category);
+
+        $response = $this->actingAs($user)->from(route('products.edit', $productId))->put(
             route('products.update', $productId),
             $updatedProduct->toArray(),
         );
