@@ -68,7 +68,7 @@ class ProductPaginationTest extends TestCase
 
         [$user, $status] = $getData();
 
-        $response = $this->actingAs($user)->get(route('products.index', compact('products')));
+        $response = $this->actingAs($user)->get(route('products.index'));
 
         if ($status == 200) {
             $response->assertSee($status)
