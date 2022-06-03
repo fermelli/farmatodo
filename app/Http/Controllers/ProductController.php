@@ -44,9 +44,18 @@ class ProductController extends Controller
             'brand' => 'required',
             'price' => 'required',
             'quantity' => 'required',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
-        Product::create($request->all());
+        $category = Category::find($request->input('category_id'));
+
+        $product = new Product();
+
+        $product->fill($request->except('category_id'));
+
+        $product->category()->associate($category);
+
+        $product->save();
 
         return redirect()->route('products.index')
             ->with('success', 'Product created successfully.');

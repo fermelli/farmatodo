@@ -103,9 +103,12 @@ class ProductCrudTest extends TestCase
     {
         [$user, $status] = $getData();
 
-        $product = Product::factory()->make();
+        $category = Category::all()->random();
 
-        $response = $this->actingAs($user)->post(
+        $product = Product::factory()->make();
+        $product->category()->associate($category);
+
+        $response = $this->actingAs($user)->from(route('products.create'))->post(
             route('products.store'),
             $product->toArray(),
         );
@@ -138,6 +141,7 @@ class ProductCrudTest extends TestCase
                     'brand' => null,
                     'price' => null,
                     'quantity' => null,
+                    'category_id' => null,
                 ],
             );
 
@@ -149,6 +153,7 @@ class ProductCrudTest extends TestCase
                     'brand',
                     'price',
                     'quantity',
+                    'category_id',
                 ]);
         }
 
