@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Roles\RoleUserController;
 use App\Http\Controllers\Roles\RoleViewController;
 use App\Http\Controllers\Roles\RolesController;
