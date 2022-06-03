@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Products;
 
+use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(5);
+        $products = Product::with('category')->latest()->paginate(5);
 
         return view('products.index', compact('products'));
     }
@@ -26,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('products.create', ['categories' => Category::all()]);
     }
 
     /**
@@ -43,9 +45,18 @@ class ProductController extends Controller
             'brand' => 'required',
             'price' => 'required',
             'quantity' => 'required',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
-        Product::create($request->all());
+        $category = Category::find($request->input('category_id'));
+
+        $product = new Product();
+
+        $product->fill($request->except('category_id'));
+
+        $product->category()->associate($category);
+
+        $product->save();
 
         return redirect()->route('products.index')
             ->with('success', 'Product created successfully.');
@@ -72,7 +83,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', ['product' => $product]);
+        return view('products.edit', ['product' => $product, 'categories' => Category::all()]);
     }
 
     /**
@@ -90,6 +101,7 @@ class ProductController extends Controller
             'brand' => 'required',
             'price' => 'required',
             'quantity' => 'required',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $product->update($request->all());

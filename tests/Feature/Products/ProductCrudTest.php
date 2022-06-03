@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Products;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -81,7 +82,14 @@ class ProductCrudTest extends TestCase
     {
         [$user, $status] = $getData();
 
+        $categories = Category::all();
+
         $response = $this->actingAs($user)->get(route('products.create'));
+
+        if ($status == 200) {
+            $response->assertStatus($status)
+                ->assertSee($categories->pluck('name')->toArray());
+        }
 
         $response->assertStatus($status);
     }
@@ -95,9 +103,12 @@ class ProductCrudTest extends TestCase
     {
         [$user, $status] = $getData();
 
-        $product = Product::factory()->make();
+        $category = Category::all()->random();
 
-        $response = $this->actingAs($user)->post(
+        $product = Product::factory()->make();
+        $product->category()->associate($category);
+
+        $response = $this->actingAs($user)->from(route('products.create'))->post(
             route('products.store'),
             $product->toArray(),
         );
@@ -130,6 +141,7 @@ class ProductCrudTest extends TestCase
                     'brand' => null,
                     'price' => null,
                     'quantity' => null,
+                    'category_id' => null,
                 ],
             );
 
@@ -141,6 +153,7 @@ class ProductCrudTest extends TestCase
                     'brand',
                     'price',
                     'quantity',
+                    'category_id',
                 ]);
         }
 
@@ -160,6 +173,8 @@ class ProductCrudTest extends TestCase
 
         $product = Product::all()->random();
 
+        $categories = Category::all();
+
         $response = $this->actingAs($user)->get(
             route('products.edit', ['product' => $product->id])
         );
@@ -170,11 +185,13 @@ class ProductCrudTest extends TestCase
                 ->assertSee($product->type)
                 ->assertSee($product->brand)
                 ->assertSee($product->price)
-                ->assertSee($product->quantity);
+                ->assertSee($product->quantity)
+                ->assertSee($product->category_id)
+                ->assertSee($categories->pluck('name')->toArray());
         }
 
         if ($status == 403) {
-            $response->assertSee($status);
+            $response->assertStatus($status);
         }
     }
 
@@ -189,9 +206,12 @@ class ProductCrudTest extends TestCase
 
         $productId = Product::all()->random()->id;
 
-        $updatedProduct = Product::factory()->make();
+        $category = Category::all()->random();
 
-        $response = $this->actingAs($user)->put(
+        $updatedProduct = Product::factory()->make();
+        $updatedProduct->category()->associate($category);
+
+        $response = $this->actingAs($user)->from(route('products.edit', $productId))->put(
             route('products.update', $productId),
             $updatedProduct->toArray(),
         );

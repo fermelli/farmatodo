@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Products\ProductController;
+use App\Http\Controllers\Products\ProductSearchController;
 use App\Http\Controllers\Roles\RoleUserController;
 use App\Http\Controllers\Roles\RoleViewController;
 use App\Http\Controllers\Roles\RolesController;
@@ -17,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('landing');
+Route::get('/', [ProductSearchController::class, 'index'])->name('landing');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
@@ -39,5 +38,7 @@ Route::middleware(['auth', 'verified', 'can:is-super-administrator'])->group(fun
 //PRODUCTS
 Route::resource('products', ProductController::class)
     ->middleware(['auth', 'verified', 'can:is-super-administrator-or-administrator']);
+
+Route::get('/product-search', [ProductSearchController::class, 'search'])->name('product-search');
 
 require __DIR__ . '/auth.php';

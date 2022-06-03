@@ -59,6 +59,15 @@
                                 <x-input id="quantity" class="block mt-1 w-full" type="number" value="{{ $product->quantity }}" step="1" name="quantity" placeholder="0" required />
                             </div>
                             <div>
+                                <x-label class="mt-4" for="category_id" :value="__('Category')" />
+
+                                <select class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="category_id" id="category_id" required>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
                                     <button type="submit" class="px-4 py-2 my-4 bg-blue-600 text-white">{{ __('Submit') }}</button>
                             </div>
                         </div>

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,6 +16,11 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::factory()->count(50)->create();
+        $categories = Category::all();
+
+        Product::factory()->count(50)->make()->each(function ($product) use ($categories) {
+            $product->category()->associate($categories->random());
+            $product->save();
+        });
     }
 }
