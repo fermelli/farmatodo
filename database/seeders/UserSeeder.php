@@ -36,7 +36,14 @@ class UserSeeder extends Seeder
                 'email' => 'no.super.admin@email.com',
             ]);
 
-        User::factory()->count(8)
+        User::factory()
+            ->hasAttached([$administratorRole, $guestRole])
+            ->create([
+                'name' => 'Admin',
+                'email' => 'admin@email.com',
+            ]);
+
+        User::factory()->count(7)
             ->hasAttached([$administratorRole, $userRole, $guestRole])
             ->create();
 

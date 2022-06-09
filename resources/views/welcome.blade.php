@@ -1,4 +1,4 @@
-<x-landing-layout>
+<x-shopping-cart-layout>
     <div class="w-full h-[750px] bg-[#94b9b4] relative overflow-hidden">
         <img class="absolute top-[33%] left-[33%]" src="{{ asset('images/layer7.webp') }}" alt="Layer7-1">
         <img class="absolute top-[10%] right-[33%]" src="{{ asset('images/layer7.webp') }}" alt="Layer7-1">
@@ -32,7 +32,7 @@
     </section>
 
     <section id="nosotros">
-        <div class="relative w-full h-[900px] bg-[#348A7B] xl:bg-[url('/images/bg.jpg')] bg-[25%_top] xl:bg-[30%_top]">
+        <div class="relative w-full h-[900px] bg-[#348A7B] xl:bg-[url('/images/bg.jpg')] bg-[25%_top] xl:bg-[30%_top] bg-no-repeat">
             <div class="absolute xl:w-1/2 right-0 py-4 md:p-16 xl:px-32,py-16">
                 <h2 class="font-[Poppins] text-white text-5xl p-4">Nosotros</h2>
                 <p class="font-[Poppins] text-white text-base p-4">
@@ -92,14 +92,7 @@
                     <div class="flex flex-wrap">
                         @foreach ($products as $product)
                             <div class="w-full px-4 md:px-0 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
-                                <div class="bg-slate-200 mx-4 my-8 p-4 rounded hover:scale-[1.02] duration-150 ease-in-out">
-                                    <div class="p-8">
-                                        <img class="w-full" src="{{ asset('images/image-svgrepo-com.svg') }}" alt="Imagen producto">
-                                    </div>
-                                    <h4 class="text-base uppercase mb-2">{{ $product->name }}</h4>
-                                    <span class="block text-sm">{{ $product->brand }}</span>
-                                    <span class="block text-xl">Bs. {{ $product->price }}</span>
-                                </div>
+                                <x-product-card :product="Arr::add($product, 'url_image', asset('images/image-svgrepo-com.svg'))" />
                             </div>
                         @endforeach
                     </div>
@@ -117,4 +110,4 @@
             </div>
         </div>
     </section>
-</x-landing-layout>
+</x-shopping-cart-layout>

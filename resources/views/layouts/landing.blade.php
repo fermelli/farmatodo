@@ -63,7 +63,7 @@
             </nav>
         </header>
 
-        <main>
+        <main id="shopping-cart">
             {{ $slot }}
         </main>
 

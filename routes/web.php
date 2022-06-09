@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Products\ProductController;
+use App\Http\Controllers\Products\ProductPurchaseController;
 use App\Http\Controllers\Products\ProductSearchController;
 use App\Http\Controllers\Roles\RoleUserController;
 use App\Http\Controllers\Roles\RoleViewController;
@@ -40,5 +41,18 @@ Route::resource('products', ProductController::class)
     ->middleware(['auth', 'verified', 'can:is-super-administrator-or-administrator']);
 
 Route::get('/product-search', [ProductSearchController::class, 'search'])->name('product-search');
+
+// PURCHASES
+Route::get('purchases', [ProductPurchaseController::class, 'index'])->name('purchases');
+
+Route::middleware(['auth', 'verified', 'can:is-user'])->group(function () {
+    Route::post('purchases/store', [ProductPurchaseController::class, 'store'])
+        ->name('purchases.store');
+    Route::get('purchases/show/{purchase}', [ProductPurchaseController::class, 'show'])
+        ->middleware('can:show-purchase,purchase')
+        ->name('purchases.show');
+    Route::get('purchases/all', [ProductPurchaseController::class, 'all'])
+        ->name('purchases.all');
+});
 
 require __DIR__ . '/auth.php';
