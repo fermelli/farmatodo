@@ -22,16 +22,31 @@ export default {
     created() {
         localStorage.setItem('products', JSON.stringify(this.products));
     },
+    methods: {
+        submitPurchase() {
+            localStorage.setItem('products', JSON.stringify([]));
+        },
+    },
 };
 </script>
 
 <template>
     <transition-group name="list" tag="ul" appear>
         <li
-            v-for="product in products"
+            v-for="(product, index) in products"
             :key="product.id"
             class="flex justify-between items-center py-4 border-b-2 border-b-slate-200"
         >
+            <input
+                type="hidden"
+                :name="`products[${index}][id]`"
+                :value="product.id"
+            />
+            <input
+                type="hidden"
+                :name="`products[${index}][purchase_quantity]`"
+                :value="product.purchase_quantity"
+            />
             <div class="w-16 h-16 p-2">
                 <img :src="urlDefaultImage" :alt="product.name" />
             </div>
@@ -96,5 +111,14 @@ export default {
     <div v-if="products.length">
         <h3 class="my-4 py-2 text-lg">Subtotal</h3>
         <span class="text-lg font-bold">Bs. {{ subtotal }}</span>
+    </div>
+
+    <div class="py-4">
+        <input
+            class="w-full py-2 px-4 bg-[#4bc7b2] hover:bg-[#348A7B] text-white rounded-full uppercase"
+            type="submit"
+            value="Comprar"
+            @click="submitPurchase"
+        />
     </div>
 </template>

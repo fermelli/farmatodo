@@ -44,7 +44,15 @@ Route::get('/product-search', [ProductSearchController::class, 'search'])->name(
 
 // PURCHASES
 Route::get('purchases', [ProductPurchaseController::class, 'index'])->name('purchases');
-Route::post('purchases/store', [ProductPurchaseController::class, 'store'])
-    ->middleware(['auth', 'verified'])->name('purchases.store');
+
+Route::middleware(['auth', 'verified', 'can:is-user'])->group(function () {
+    Route::post('purchases/store', [ProductPurchaseController::class, 'store'])
+        ->name('purchases.store');
+    Route::get('purchases/show/{purchase}', [ProductPurchaseController::class, 'show'])
+        ->middleware('can:show-purchase,purchase')
+        ->name('purchases.show');
+    Route::get('purchases/all', [ProductPurchaseController::class, 'all'])
+        ->name('purchases.all');
+});
 
 require __DIR__ . '/auth.php';

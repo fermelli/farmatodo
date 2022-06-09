@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Purchase;
 use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -44,6 +45,10 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('is-guest', function (User $user) {
             return $user->isGuest();
+        });
+
+        Gate::define('show-purchase', function (User $user, Purchase $purchase) {
+            return $user->id === $purchase->user_id;
         });
     }
 }

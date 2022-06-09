@@ -38,7 +38,7 @@
                         </tr>
                         @foreach ($products as $product)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ (($products->currentpage() - 1) * $products->perpage()) + $loop->iteration }}</td>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->type }}</td>
                             <td>{{ $product->brand }}</td>

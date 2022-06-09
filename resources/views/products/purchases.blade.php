@@ -16,7 +16,8 @@
                 </div>
             @else
                 @if (count($products) > 0)
-                    <form action="{{ asset('purchases.store') }}" method="POST">
+                    <form action="{{ route('purchases.store') }}" method="POST">
+                        @csrf
                         <field-form-purchase :validate-products="{{ json_encode($products) }}" url-default-image="{{ asset('images/image-svgrepo-com.svg') }}"/>
                     </form>
                 @else

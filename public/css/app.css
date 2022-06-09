@@ -742,6 +742,9 @@ select {
 .z-10 {
   z-index: 10;
 }
+.float-right {
+  float: right;
+}
 .m-\[13px\] {
   margin: 13px;
 }
@@ -1400,6 +1403,9 @@ select {
 }
 .text-center {
   text-align: center;
+}
+.text-right {
+  text-align: right;
 }
 .font-\[Poppins\] {
   font-family: Poppins;

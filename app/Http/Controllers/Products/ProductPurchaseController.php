@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Products;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductPurchaseRequest;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Models\Purchase;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductPurchaseController extends Controller
 {
@@ -38,68 +40,59 @@ class ProductPurchaseController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductPurchaseRequest $request)
     {
-        //
+        if ($request->has('products')) {
+            $validated = $request->validated();
+
+            $products = collect($validated['products']);
+
+            $productsIds = $products->pluck('id');
+
+            $purchaseQuantities = $products->pluck('purchase_quantity');
+
+            $productsToPurchase = Product::whereIn('id', $productsIds)->get();
+
+            $purchase = null;
+
+            try {
+                DB::beginTransaction();
+
+                $purchase = new Purchase();
+                $purchase->user()->associate(Auth::user());
+                $purchase->save();
+
+                $productsToPurchase->each(function ($productToPurchase, $index) use ($purchase, $purchaseQuantities) {
+                    $purchase->products()->attach($productToPurchase->id, ['quantity' => $purchaseQuantities[$index]]);
+                });
+
+                DB::commit();
+
+                return redirect()->route('purchases.show', $purchase->id)
+                    ->with('success', 'Compra registrada exitosamente.');
+            } catch (\Throwable $th) {
+                DB::rollBack();
+
+                return redirect()->back();
+            }
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Purchase $purchase)
     {
-        //
+        $purchase->products;
+        return view('products.show-purchase', ['purchase' => $purchase]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function all()
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $purchases = Purchase::where('user_id', auth()->user()->id)
+            ->latest()->with('products')->paginate(5);
+        return view('products.all-purchase', ['purchases' => $purchases]);
     }
 }
