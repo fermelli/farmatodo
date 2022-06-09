@@ -1,5 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/vue/roles/main.js": "/js/vue/roles/main.js",
+    "/js/vue/shopping-cart/main.js": "/js/vue/shopping-cart/main.js",
+    "/js/vue/purchases/main.js": "/js/vue/purchases/main.js",
     "/css/app.css": "/css/app.css"
 }

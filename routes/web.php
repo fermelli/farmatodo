@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Products\ProductController;
+use App\Http\Controllers\Products\ProductPurchaseController;
 use App\Http\Controllers\Products\ProductSearchController;
 use App\Http\Controllers\Roles\RoleUserController;
 use App\Http\Controllers\Roles\RoleViewController;
@@ -40,5 +41,10 @@ Route::resource('products', ProductController::class)
     ->middleware(['auth', 'verified', 'can:is-super-administrator-or-administrator']);
 
 Route::get('/product-search', [ProductSearchController::class, 'search'])->name('product-search');
+
+// PURCHASES
+Route::get('purchases', [ProductPurchaseController::class, 'index'])->name('purchases');
+Route::post('purchases/store', [ProductPurchaseController::class, 'store'])
+    ->middleware(['auth', 'verified'])->name('purchases.store');
 
 require __DIR__ . '/auth.php';
