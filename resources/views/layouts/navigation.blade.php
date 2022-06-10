@@ -30,6 +30,11 @@
                             {{ __('Compras') }}
                         </x-nav-link>
                     @endcan
+                    @can('is-super-administrator-or-administrator')
+                        <x-nav-link :href="route('report')" :active="request()->routeIs('report')">
+                            {{ __('Report') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
