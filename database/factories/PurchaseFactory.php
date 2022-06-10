@@ -16,8 +16,13 @@ class PurchaseFactory extends Factory
      */
     public function definition()
     {
+        $minDate = strtotime('2022-06-01');
+        $maxDate = strtotime(now()->format('Y-m-d'));
+        $randomDate = date('Y-m-d', mt_rand($minDate, $maxDate));
+
         return [
-            //
+            'created_at' => $randomDate,
+            'updated_at' => $randomDate,
         ];
     }
 }

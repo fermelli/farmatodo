@@ -5,6 +5,10 @@ namespace Tests\Feature\Products;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
+use Database\Seeders\CategorySeeder;
+use Database\Seeders\ProductSeeder;
+use Database\Seeders\RoleSeeder;
+use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -15,7 +19,12 @@ class ProductCrudTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->seed();
+        $this->seed([
+            RoleSeeder::class,
+            UserSeeder::class,
+            CategorySeeder::class,
+            ProductSeeder::class,
+        ]);
     }
 
     public function providerUsers()

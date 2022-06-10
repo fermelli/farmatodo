@@ -61,17 +61,22 @@ class ReportTest extends TestCase
     public function test_view_purchase_report_between_dates()
     {
         $admin = User::where('email', 'admin@email.com')->first();
+
         $user = User::where('email', 'user.user@email.com')->first();
+
         $purchases = Purchase::factory()->count(5)->for($user)
             ->hasAttached(Product::all()->random(3), [
                 'quantity' => 3,
             ])->create([
                 'created_at' => '2022-05-02',
+                'updated_at' => '2022-05-02',
             ]);
+
         $response = $this->actingAs($admin)->get(route('report', [
             'start_date' => '2022-05-01',
             'end_date' => '2022-05-04',
         ]));
+
         $response->assertSee(200)
             ->assertSee($purchases->get(0)->created_at)
             ->assertSee($purchases->get(1)->created_at)
