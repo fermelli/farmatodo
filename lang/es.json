@@ -771,5 +771,6 @@
     "Product created successfully.": "Producto creado con éxito.",
     "Product updated successfully.": "Producto actualizado con éxito.",
     "Product deleted successfully.": "Producto eliminado con éxito.",
-    "Category": "Categoria"
+    "Category": "Categoria",
+    "Report": "Reporte"
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Products\ProductPurchaseController;
 use App\Http\Controllers\Products\ProductSearchController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Roles\RoleUserController;
 use App\Http\Controllers\Roles\RoleViewController;
 use App\Http\Controllers\Roles\RolesController;
@@ -54,5 +55,11 @@ Route::middleware(['auth', 'verified', 'can:is-user'])->group(function () {
     Route::get('purchases/all', [ProductPurchaseController::class, 'all'])
         ->name('purchases.all');
 });
+
+// Report
+
+Route::get('report', [ReportController::class, 'index'])
+    ->middleware(['auth', 'verified', 'can:is-super-administrator-or-administrator'])
+    ->name('report');
 
 require __DIR__ . '/auth.php';
