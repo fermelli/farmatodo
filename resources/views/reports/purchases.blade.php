@@ -9,6 +9,17 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    @if ($errors->any())
+                        <div class="bg-red-100 px-4 py-2">
+                            <span class="text-red-900 py-4"><strong>{{ __('Whoops!') }}</strong> {{ __('There were some problems with your input.') }}</span>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li class="text-sm text-red-700">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form class= "w-[500px] mx-auto" action="{{route('report')}}" method="GET" >
                         <div>
                             <x-label class="mt-4" for="start_date" :value="__('Fecha Inicio')" />

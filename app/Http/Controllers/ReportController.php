@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReportRequest;
 use App\Models\Purchase;
-use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
@@ -12,8 +12,10 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(ReportRequest $request)
     {
+        $request->validated();
+
         $startDate = $request->query('start_date', now()->format('Y-m-d'));
         $endDate = $request->query('end_date', now()->format('Y-m-d'));
 
