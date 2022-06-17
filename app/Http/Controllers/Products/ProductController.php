@@ -119,10 +119,22 @@ class ProductController extends Controller
             $image = $request->file('image');
 
             $name = $image->hashName();
-            
+
             $image->storeAs('public/products', $name);
 
             $product->url_image = "storage/products/$name";
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function paginate()
+    {
+        $products = Product::latest()->paginate(20);
+
+        return $products;
     }
 }

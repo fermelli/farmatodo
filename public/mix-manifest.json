@@ -3,5 +3,6 @@
     "/js/vue/roles/main.js": "/js/vue/roles/main.js",
     "/js/vue/shopping-cart/main.js": "/js/vue/shopping-cart/main.js",
     "/js/vue/purchases/main.js": "/js/vue/purchases/main.js",
+    "/js/vue/discounts/main.js": "/js/vue/discounts/main.js",
     "/css/app.css": "/css/app.css"
 }

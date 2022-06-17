@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Products\ProductPurchaseController;
 use App\Http\Controllers\Products\ProductSearchController;
@@ -41,6 +42,10 @@ Route::middleware(['auth', 'verified', 'can:is-super-administrator'])->group(fun
 Route::resource('products', ProductController::class)
     ->middleware(['auth', 'verified', 'can:is-super-administrator-or-administrator']);
 
+Route::get('products-paginate', [ProductController::class, 'paginate'])
+    ->middleware(['auth', 'verified', 'can:is-super-administrator-or-administrator'])
+    ->name('products.paginate');
+
 Route::get('/product-search', [ProductSearchController::class, 'search'])->name('product-search');
 
 // PURCHASES
@@ -57,9 +62,17 @@ Route::middleware(['auth', 'verified', 'can:is-user'])->group(function () {
 });
 
 // Report
-
 Route::get('report', [ReportController::class, 'index'])
     ->middleware(['auth', 'verified', 'can:is-super-administrator-or-administrator'])
     ->name('report');
+
+//DISCOUNTS
+Route::resource('discounts', DiscountController::class)->except(['edit', 'update'])
+    ->middleware(['auth', 'verified', 'can:is-super-administrator-or-administrator']);
+
+Route::post('discounts/{discountId}/restore', [DiscountController::class, 'restore'])
+    ->middleware(['auth', 'verified', 'can:is-super-administrator-or-administrator'])
+    ->name('discounts.restore');
+
 
 require __DIR__ . '/auth.php';
