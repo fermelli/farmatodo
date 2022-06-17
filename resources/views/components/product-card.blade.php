@@ -6,7 +6,16 @@
     </div>
     <h4 class="text-base uppercase mb-2">{{ $product->name }}</h4>
     <span class="block text-sm">{{ $product->brand }}</span>
-    <span class="block text-xl">Bs. {{ $product->price }}</span>
+    
+    @php
+        $discount = $product->discounts->get(0)
+    @endphp
+    @if ($discount)
+        <span class="block text-sm text-center text-slate-500"><small>Antes</small> <span class="line-through">Bs. {{ $product->price }}</span></span>
+        <span class="block text-lg text-center"><small>Ahora</small> Bs. {{ $product->price * (1 - $discount->percentage/100) }}</span>
+    @else
+        <span class="block text-lg text-center">Bs. {{ $product->price }}</span>
+    @endif
     <button class="block px-4 py-2 bg-[#4bc7b2] hover:bg-[#348A7B] text-white uppercase rounded-full mt-4 mx-auto text-sm" v-on:click="addToShoppingCart($event, {{ json_encode($product) }})">
         <svg
             version="1.1"

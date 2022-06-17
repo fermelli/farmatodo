@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Products;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
+use App\Models\Discount;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -133,7 +134,14 @@ class ProductController extends Controller
      */
     public function paginate()
     {
-        $products = Product::latest()->paginate(20);
+        $activeDiscounts = Discount::with('products:id')->whereNull('deleted_at')
+            ->whereDate('end_date', '>=', now(-4)->format('Y-m-d'))->get();
+
+        $productsIds = $activeDiscounts->flatMap(function ($activeDiscount) {
+            return $activeDiscount->products;
+        })->pluck('id');
+
+        $products = Product::whereNotIn('id', $productsIds)->latest()->paginate(20);
 
         return $products;
     }
