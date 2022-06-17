@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDiscountRequest;
 use App\Models\Discount;
-use App\Models\Product;
 
 class DiscountController extends Controller
 {
@@ -27,9 +26,7 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        $products = Product::latest()->paginate(20);
-
-        return view('discounts.create', compact('products'));
+        return view('discounts.create');
     }
 
     /**

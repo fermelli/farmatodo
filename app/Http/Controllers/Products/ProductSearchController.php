@@ -19,7 +19,11 @@ class ProductSearchController extends Controller
         $categories = Category::all();
 
         $productsByCategory = $categories->mapWithKeys(function ($category) {
-            return [$category['name'] => Product::where('category_id', $category->id)->latest()->take(5)->get()];
+            return [$category['name'] => Product::with(['discounts' => function ($query) {
+                $query->whereNull('deleted_at')
+                    ->whereDate('end_date', '>=', now(-4)->format('Y-m-d'));
+            }])
+                ->where('category_id', $category->id)->latest()->take(5)->get()];
         });
 
         return view('welcome', ['productsByCategory' => $productsByCategory]);
@@ -37,7 +41,10 @@ class ProductSearchController extends Controller
 
         if ($selectedCategories->count() > 0) {
             $productsByCategory = $selectedCategories->mapWithKeys(function ($category) use ($search) {
-                return [$category['name'] => Product::where('category_id', $category->id)
+                return [$category['name'] => Product::with(['discounts' => function ($query) {
+                    $query->whereNull('deleted_at')
+                        ->whereDate('end_date', '>=', now(-4)->format('Y-m-d'));
+                }])->where('category_id', $category->id)
                     ->where(function ($query) use ($search) {
                         $query->where('name', 'LIKE', "%$search%")
                             ->orWhere('type', 'LIKE', "%$search%")
@@ -52,7 +59,10 @@ class ProductSearchController extends Controller
             ]);
         }
 
-        $products = Product::where('name', 'LIKE', "%$search%")
+        $products = Product::with(['discounts' => function ($query) {
+            $query->whereNull('deleted_at')
+                ->whereDate('end_date', '>=', now(-4)->format('Y-m-d'));
+        }])->where('name', 'LIKE', "%$search%")
             ->orWhere('type', 'LIKE', "%$search%")
             ->orWhere('brand', 'LIKE', "%$search%")
             ->with('category')->paginate(20);
