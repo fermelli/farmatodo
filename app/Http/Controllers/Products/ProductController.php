@@ -123,4 +123,16 @@ class ProductController extends Controller
         return redirect()->route('products.index')
             ->with('success', 'Product deleted successfully.');
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function paginate()
+    {
+        $products = Product::latest()->paginate(20);
+
+        return $products;
+    }
 }

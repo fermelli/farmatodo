@@ -35,6 +35,11 @@
                             {{ __('Report') }}
                         </x-nav-link>
                     @endcan
+                    @can('is-super-administrator-or-administrator')
+                        <x-nav-link :href="route('discounts.index')" :active="request()->routeIs('discounts.index')">
+                            {{ __('Descuentos') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
