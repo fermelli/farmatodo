@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -34,27 +35,18 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ProductRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'type' => 'required',
-            'brand' => 'required',
-            'price' => 'required',
-            'quantity' => 'required',
-            'category_id' => 'required|exists:categories,id',
-        ]);
-
-        $category = Category::find($request->input('category_id'));
+        $request->safe();
 
         $product = new Product();
 
-        $product->fill($request->except('category_id'));
+        $product->fill($request->all());
 
-        $product->category()->associate($category);
+        $this->uploadImage($request, $product);
 
         $product->save();
 
@@ -89,22 +81,19 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ProductRequest $request
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        $request->validate([
-            'name' => 'required',
-            'type' => 'required',
-            'brand' => 'required',
-            'price' => 'required',
-            'quantity' => 'required',
-            'category_id' => 'required|exists:categories,id',
-        ]);
+        $request->safe();
 
-        $product->update($request->all());
+        $product->fill($request->all());
+
+        $this->uploadImage($request, $product);
+
+        $product->save();
 
         return redirect()->route('products.index')
             ->with('success', 'Product updated successfully.');
@@ -122,5 +111,18 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')
             ->with('success', 'Product deleted successfully.');
+    }
+
+    private function uploadImage(Request $request, Product $product)
+    {
+        if ($request->has('image')) {
+            $image = $request->file('image');
+
+            $name = $image->hashName();
+            
+            $image->storeAs('public/products', $name);
+
+            $product->url_image = "storage/products/$name";
+        }
     }
 }
