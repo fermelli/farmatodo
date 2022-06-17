@@ -28,7 +28,7 @@
                         </div>
                     @endif
                        
-                    <form action="{{ route('products.store') }}" method="POST">
+                    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                       
                          <div class="w-[400px] mx-auto">
@@ -69,7 +69,12 @@
                                 </select>
                             </div>
                             <div>
-                                    <button type="submit" class="px-4 py-2 my-4 bg-blue-600 text-white">{{ __('Submit') }}</button>
+                                <x-label class="mt-4" for="image" :value="__('Imagen')" />
+
+                                <x-input id="image" class="block mt-1 w-full border-[1px] px-3 py-[5px] focus:outline-none" type="file" step="0.001" name="image" accept=".png, .jpg, .jpeg" />
+                            </div>
+                            <div>
+                                <button type="submit" class="px-4 py-2 my-4 bg-blue-600 text-white">{{ __('Submit') }}</button>
                             </div>
                         </div>
                        

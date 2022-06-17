@@ -28,6 +28,7 @@
                     <table class="table">
                         <tr>
                             <th>#</th>
+                            <th>{{ __('Imagen') }}</th>
                             <th>{{ __('Name') }}</th>
                             <th>{{ __('Type') }}</th>
                             <th>{{ __('Brand') }}</th>
@@ -39,6 +40,9 @@
                         @foreach ($products as $product)
                         <tr>
                             <td>{{ (($products->currentpage() - 1) * $products->perpage()) + $loop->iteration }}</td>
+                            <td>
+                                <img class="w-16 h-auto" src="{{ $product->url_image ? asset($product->url_image) : asset('images/image-svgrepo-com.svg') }}" alt="{{ $product->name }}">
+                            </td>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->type }}</td>
                             <td>{{ $product->brand }}</td>

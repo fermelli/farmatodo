@@ -1,7 +1,7 @@
 @props(['product'])
 
-<div class="bg-slate-200 mx-4 my-8 p-4 rounded hover:shadow-lg transition-shadow">
-    <div class="p-8">
+<div class="bg-slate-50 mx-4 my-8 p-4 rounded hover:shadow-lg transition-shadow">
+    <div class="p-4">
         <img class="w-full" src="{{ $product->url_image }}" alt="{{ $product->name }}">
     </div>
     <h4 class="text-base uppercase mb-2">{{ $product->name }}</h4>

@@ -17,7 +17,10 @@
                         </div>
                     </div>
                     
-                    <div>
+                    <div class="w-[500px] mx-auto">
+                        <div class="p-12">
+                            <img src="{{ $product->url_image ? asset($product->url_image) : asset('images/image-svgrepo-com.svg') }}" alt="{{ $product->name }}">
+                        </div>
                         <div>
                             <strong>{{ __('Name') }}:</strong>
                             {{ $product->name }}
