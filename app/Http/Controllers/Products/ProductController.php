@@ -136,11 +136,11 @@ class ProductController extends Controller
     public function paginate(Request  $request)
     {
         $size = $request->query('size', 20);
-        $activeDiscounts = Discount::with('products:id')->whereNull('deleted_at')
+        $inForceDiscounts = Discount::withTrashed()->with('products:id')
             ->whereDate('end_date', '>=', now(-4)->format('Y-m-d'))->get();
 
-        $productsIds = $activeDiscounts->flatMap(function ($activeDiscount) {
-            return $activeDiscount->products;
+        $productsIds = $inForceDiscounts->flatMap(function ($inForceDiscount) {
+            return $inForceDiscount->products;
         })->pluck('id');
 
         $products = Product::whereNotIn('id', $productsIds)->latest()->paginate($size);
