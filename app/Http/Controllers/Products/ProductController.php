@@ -130,10 +130,12 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function paginate()
+    public function paginate(Request  $request)
     {
+        $size = $request->query('size', 20);
         $activeDiscounts = Discount::with('products:id')->whereNull('deleted_at')
             ->whereDate('end_date', '>=', now(-4)->format('Y-m-d'))->get();
 
@@ -141,7 +143,7 @@ class ProductController extends Controller
             return $activeDiscount->products;
         })->pluck('id');
 
-        $products = Product::whereNotIn('id', $productsIds)->latest()->paginate(20);
+        $products = Product::whereNotIn('id', $productsIds)->latest()->paginate($size);
 
         return $products;
     }
