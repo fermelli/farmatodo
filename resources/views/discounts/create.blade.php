@@ -72,15 +72,7 @@
 
                             <template v-if="productsPagination.data.length">
                                 <div class="flex flex-wrap mt-8">
-                                    <div v-for="product in productsPagination.data" :key="product.id" class="w-full px-2 md:px-0 sm:w-1/2 md:w-1/3 lg:w-1/4">
-                                        <label class="block bg-slate-200 m-2 p-2 rounded hover:shadow-lg transition-shadow" :for="`product_id_${product.id}`">
-                                            <h4 class="uppercase text-sm">@{{ product.name }}</h4>
-                                            <div class="flex justify-between">
-                                                <span class="inline-block text-lg">Bs. @{{ product.price }}</span>
-                                                <input class="pointer-events-none" type="checkbox" :id="`product_id_${product.id}`" :value="product.id" v-on:change="addProductId(product.id)" :checked="productsIds.indexOf(product.id) != -1">
-                                            </div>
-                                        </label>
-                                    </div>
+                                    <mini-card-product v-for="product in productsPagination.data" :key="product.id" :product="product" :products-ids="productsIds" v-on:add-product-id="addProductId" />
                                 </div>
 
                                 <pagination-buttons

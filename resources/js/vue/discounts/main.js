@@ -1,10 +1,12 @@
 import { createApp } from 'vue';
 import productService from './../../services/product-service';
 import PaginationButtons from './../components/PaginationButtons.vue';
+import MiniCardProduct from './MiniCardProduct.vue';
 
 createApp({
     components: {
         PaginationButtons,
+        MiniCardProduct,
     },
     data() {
         return {
