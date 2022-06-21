@@ -1,9 +1,13 @@
 <script>
 import roleService from './../../services/role-service';
+import PaginationButtons from '../components/PaginationButtons.vue';
 import { uuid } from './../../utils';
 
 export default {
     name: 'RootRoles',
+    components: {
+        PaginationButtons,
+    },
     data() {
         return {
             loading: false,
@@ -79,7 +83,8 @@ export default {
                 this.getUserRole(currentPage);
             }
         },
-        changeSizePagination() {
+        changeSizePagination(size) {
+            this.size = size;
             localStorage.setItem('size', String(this.size));
             this.getUserRole(1);
         },
@@ -147,63 +152,15 @@ export default {
                     </tr>
                 </tbody>
             </table>
-            <div class="mt-8 flex justify-between">
-                <div>
-                    <button
-                        class="
-                            py-2
-                            px-4
-                            bg-slate-400
-                            text-white
-                            disabled:bg-slate-200 disabled:cursor-not-allowed
-                        "
-                        :disabled="userRolePagination?.current_page == 1"
-                        @click="
-                            getUserRole(userRolePagination?.current_page - 1)
-                        "
-                    >
-                        Anterior
-                    </button>
-                    <button
-                        v-for="page in userRolePagination?.last_page"
-                        :key="page"
-                        class="py-2 px-4 bg-slate-500 text-white"
-                        :class="{
-                            'bg-slate-700':
-                                userRolePagination?.current_page == page,
-                        }"
-                        @click="getUserRole(page)"
-                    >
-                        {{ page }}
-                    </button>
-                    <button
-                        class="
-                            py-2
-                            px-4
-                            bg-slate-400
-                            text-white
-                            disabled:bg-slate-200 disabled:cursor-not-allowed
-                        "
-                        :disabled="
-                            userRolePagination?.current_page ==
-                            userRolePagination?.last_page
-                        "
-                        @click="
-                            getUserRole(userRolePagination?.current_page + 1)
-                        "
-                    >
-                        Siguiente
-                    </button>
-                </div>
-                <div>
-                    <small class="px-2">N° de registros por página</small>
-                    <select v-model="size" @change="changeSizePagination">
-                        <option v-for="n in [5, 10, 15]" :key="n" :value="n">
-                            {{ n }}
-                        </option>
-                    </select>
-                </div>
-            </div>
+            <PaginationButtons
+                :pagination="{
+                    current_page: userRolePagination?.current_page,
+                    last_page: userRolePagination?.last_page,
+                }"
+                :page-size="size"
+                @get-data="getUserRole"
+                @change-size-pagination="changeSizePagination"
+            />
         </div>
     </div>
     <div

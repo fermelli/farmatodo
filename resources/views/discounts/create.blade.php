@@ -72,66 +72,19 @@
 
                             <template v-if="productsPagination.data.length">
                                 <div class="flex flex-wrap mt-8">
-                                    <div v-for="product in productsPagination.data" :key="product.id" class="w-full px-2 md:px-0 sm:w-1/2 md:w-1/3 lg:w-1/4">
-                                        <label class="block bg-slate-200 m-2 p-2 rounded hover:shadow-lg transition-shadow" :for="`product_id_${product.id}`">
-                                            <h4 class="uppercase text-sm">@{{ product.name }}</h4>
-                                            <div class="flex justify-between">
-                                                <span class="inline-block text-lg">Bs. @{{ product.price }}</span>
-                                                <input class="pointer-events-none" type="checkbox" :id="`product_id_${product.id}`" :value="product.id" v-on:change="addProductId(product.id)" :checked="productsIds.indexOf(product.id) != -1">
-                                            </div>
-                                        </label>
-                                    </div>
+                                    <mini-card-product v-for="product in productsPagination.data" :key="product.id" :product="product" :products-ids="productsIds" v-on:add-product-id="addProductId" />
                                 </div>
 
-                                <div class="mt-8">
-                                    <div>
-                                        <button
-                                            class="
-                                                py-2
-                                                px-4
-                                                bg-slate-400
-                                                text-white
-                                                disabled:bg-slate-200 disabled:cursor-not-allowed
-                                            "
-                                            :disabled="productsPagination?.current_page == 1"
-                                            @click="
-                                                getProducts(productsPagination?.current_page - 1)
-                                            "
-                                        >
-                                            Anterior
-                                        </button>
-                                        <button
-                                            v-for="page in productsPagination?.last_page"
-                                            :key="page"
-                                            class="py-2 px-4 bg-slate-500 text-white"
-                                            :class="{
-                                                'bg-slate-700':
-                                                    productsPagination?.current_page == page,
-                                            }"
-                                            @click="getProducts(page)"
-                                        >
-                                            @{{ page }}
-                                        </button>
-                                        <button
-                                            class="
-                                                py-2
-                                                px-4
-                                                bg-slate-400
-                                                text-white
-                                                disabled:bg-slate-200 disabled:cursor-not-allowed
-                                            "
-                                            :disabled="
-                                                productsPagination?.current_page ==
-                                                productsPagination?.last_page
-                                            "
-                                            @click="
-                                                getProducts(productsPagination?.current_page + 1)
-                                            "
-                                        >
-                                            Siguiente
-                                        </button>
-                                    </div>
-                                </div>
+                                <pagination-buttons
+                                    :pagination="{
+                                        current_page: productsPagination?.current_page,
+                                        last_page: productsPagination?.last_page,
+                                    }"
+                                    :page-size="size"
+                                    :allowed-page-sizes="[20, 30, 40]"
+                                    @get-data="getProducts"
+                                    @change-size-pagination="changeSizePagination"
+                                />
                             </template>
 
                             <div class="my-8" v-else>
