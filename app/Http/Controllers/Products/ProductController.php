@@ -137,7 +137,7 @@ class ProductController extends Controller
     {
         $size = $request->query('size', 20);
         $inForceDiscounts = Discount::withTrashed()->with('products:id')
-            ->whereDate('end_date', '>=', now(-4)->format('Y-m-d'))->get();
+            ->whereDate('end_date', '>=', now()->format('Y-m-d'))->get();
 
         $productsIds = $inForceDiscounts->flatMap(function ($inForceDiscount) {
             return $inForceDiscount->products;

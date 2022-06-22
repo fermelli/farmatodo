@@ -88,7 +88,7 @@
                             </template>
 
                             <div class="my-8" v-else>
-                                No hay productos registrados.
+                                No hay productos disponibles para descuento.
                             </div>
                         </template>
                     </div>
