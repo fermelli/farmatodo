@@ -20,8 +20,7 @@ class ProductSearchController extends Controller
 
         $productsByCategory = $categories->mapWithKeys(function ($category) {
             return [$category['name'] => Product::with(['discounts' => function ($query) {
-                $query->whereNull('deleted_at')
-                    ->whereDate('end_date', '>=', now()->format('Y-m-d'));
+                $query->activeAndInForce();
             }])
                 ->where('category_id', $category->id)->latest()->take(5)->get()];
         });
@@ -42,13 +41,10 @@ class ProductSearchController extends Controller
         if ($selectedCategories->count() > 0) {
             $productsByCategory = $selectedCategories->mapWithKeys(function ($category) use ($search) {
                 return [$category['name'] => Product::with(['discounts' => function ($query) {
-                    $query->whereNull('deleted_at')
-                        ->whereDate('end_date', '>=', now()->format('Y-m-d'));
+                    $query->activeAndInForce();
                 }])->where('category_id', $category->id)
                     ->where(function ($query) use ($search) {
-                        $query->where('name', 'LIKE', "%$search%")
-                            ->orWhere('type', 'LIKE', "%$search%")
-                            ->orWhere('brand', 'LIKE', "%$search%");
+                        $query->searchBy($search);
                     })->get()];
             });
 
@@ -60,11 +56,8 @@ class ProductSearchController extends Controller
         }
 
         $products = Product::with(['discounts' => function ($query) {
-            $query->whereNull('deleted_at')
-                ->whereDate('end_date', '>=', now()->format('Y-m-d'));
-        }])->where('name', 'LIKE', "%$search%")
-            ->orWhere('type', 'LIKE', "%$search%")
-            ->orWhere('brand', 'LIKE', "%$search%")
+            $query->activeAndInForce();
+        }])->searchBy($search)
             ->with('category')->paginate(20);
 
         return view('products.search', ['products' => $products, ...$additionalData]);
