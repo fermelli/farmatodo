@@ -19431,9 +19431,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_cart_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../mixins/cart-mixin */ "./resources/js/vue/mixins/cart-mixin.js");
+/* harmony import */ var _FieldFormPurchaseItem_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FieldFormPurchaseItem.vue */ "./resources/js/vue/purchases/FieldFormPurchaseItem.vue");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'FieldFormPurchase',
+  components: {
+    FieldFormPurchaseItem: _FieldFormPurchaseItem_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   mixins: [_mixins_cart_mixin__WEBPACK_IMPORTED_MODULE_0__["default"]],
   props: {
     validateProducts: {
@@ -19462,6 +19467,45 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mixins_cart_item_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../mixins/cart-item-mixin */ "./resources/js/vue/mixins/cart-item-mixin.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'FieldFormPurchaseItem',
+  mixins: [_mixins_cart_item_mixin__WEBPACK_IMPORTED_MODULE_0__["default"]],
+  props: {
+    product: {
+      type: Object,
+      required: true
+    },
+    index: {
+      type: Number,
+      required: true
+    },
+    urlDefaultImage: {
+      type: String,
+      required: true
+    }
+  },
+  emits: ['deleteProduct', 'changeProductQuantity'],
+  computed: {
+    sourceImage: function sourceImage() {
+      return this.product.url_image || this.urlDefaultImage;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/vue/purchases/FieldFormPurchase.vue?vue&type=template&id=ed3fddea":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/vue/purchases/FieldFormPurchase.vue?vue&type=template&id=ed3fddea ***!
@@ -19474,56 +19518,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = ["name", "value"];
-var _hoisted_2 = ["name", "value"];
-var _hoisted_3 = {
-  "class": "w-16 h-16 p-2"
-};
-var _hoisted_4 = ["src", "alt"];
-var _hoisted_5 = {
-  "class": "w-[340px]"
-};
-var _hoisted_6 = {
-  "class": "uppercase block"
-};
-var _hoisted_7 = {
-  "class": "block text-sm mt-2"
-};
-var _hoisted_8 = {
-  "class": "px-4"
-};
-var _hoisted_9 = {
-  "class": "flex justify-center"
-};
-var _hoisted_10 = ["onClick"];
-var _hoisted_11 = {
-  "class": "inline-block w-12 h-12 p-2 text-center text-lg bg-slate-100 text-slate-600"
-};
-var _hoisted_12 = ["onClick"];
-var _hoisted_13 = {
-  "class": "text-sm mt-2 font-medium"
-};
-var _hoisted_14 = {
-  "class": "flex items-start"
-};
-var _hoisted_15 = ["onClick"];
-var _hoisted_16 = {
+var _hoisted_1 = {
   key: 0
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
   "class": "my-4 py-2 text-lg"
 }, "Subtotal", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = {
+var _hoisted_3 = {
   "class": "text-lg font-bold"
 };
-var _hoisted_19 = {
+var _hoisted_4 = {
   "class": "py-4"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_field_form_purchase_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("field-form-purchase-item");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.TransitionGroup, {
     name: "list",
     tag: "ul",
@@ -19531,85 +19544,179 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.products, function (product, index) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_field_form_purchase_item, {
           key: product.id,
-          "class": "flex justify-between items-center py-4 border-b-2 border-b-slate-200"
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-          type: "hidden",
-          name: "products[".concat(index, "][id]"),
-          value: product.id
+          product: product,
+          index: index,
+          "url-default-image": $props.urlDefaultImage,
+          onChangeProductQuantity: _cache[0] || (_cache[0] = function (payload) {
+            return _ctx.changeProductQuantity(payload);
+          }),
+          onDeleteProduct: _cache[1] || (_cache[1] = function (payload) {
+            return _ctx.deleteProduct(payload);
+          })
         }, null, 8
         /* PROPS */
-        , _hoisted_1), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-          type: "hidden",
-          name: "products[".concat(index, "][purchase_quantity]"),
-          value: product.purchase_quantity
-        }, null, 8
-        /* PROPS */
-        , _hoisted_2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-          src: $props.urlDefaultImage,
-          alt: product.name
-        }, null, 8
-        /* PROPS */
-        , _hoisted_4)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(product.name), 1
-        /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_7, " Bs. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(parseFloat(product.price).toFixed(2)) + " c/u ", 1
-        /* TEXT */
-        )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-          type: "button",
-          "class": "w-12 h-12 p-2 rounded-full mr-4 text-2xl bg-slate-200",
-          onClick: function onClick($event) {
-            return _ctx.changeProductQuantity({
-              productId: product.id,
-              purchaseQuantity: product.purchase_quantity - 1
-            });
-          }
-        }, " - ", 8
-        /* PROPS */
-        , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(product.purchase_quantity), 1
-        /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-          type: "button",
-          "class": "w-12 h-12 p-2 rounded-full ml-4 text-2xl bg-slate-200",
-          onClick: function onClick($event) {
-            return _ctx.changeProductQuantity({
-              productId: product.id,
-              purchaseQuantity: product.purchase_quantity + 1
-            });
-          }
-        }, " + ", 8
-        /* PROPS */
-        , _hoisted_12)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, " Bs. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(parseFloat(product.price * product.purchase_quantity).toFixed(2)), 1
-        /* TEXT */
-        )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-          type: "button",
-          "class": "w-8 h-8 rounded-full text-lg border-2 border-[#ff8367] text-[#ff8367]",
-          onClick: function onClick($event) {
-            return _ctx.deleteProduct(product.id);
-          }
-        }, " × ", 8
-        /* PROPS */
-        , _hoisted_15)])]);
+        , ["product", "index", "url-default-image"]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))];
+      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li\r\n            v-for=\"(product, index) in products\"\r\n            :key=\"product.id\"\r\n            class=\"\r\n                flex\r\n                justify-between\r\n                items-center\r\n                py-4\r\n                border-b-2 border-b-slate-200\r\n            \"\r\n        >\r\n            <input\r\n                type=\"hidden\"\r\n                :name=\"`products[${index}][id]`\"\r\n                :value=\"product.id\"\r\n            />\r\n            <input\r\n                type=\"hidden\"\r\n                :name=\"`products[${index}][purchase_quantity]`\"\r\n                :value=\"product.purchase_quantity\"\r\n            />\r\n            <div class=\"w-16 h-16 p-2\">\r\n                <img :src=\"urlDefaultImage\" :alt=\"product.name\" />\r\n            </div>\r\n            <div class=\"w-[340px]\">\r\n                <span class=\"uppercase block\">{{ product.name }}</span>\r\n                <template v-if=\"product.discounts.length\">\r\n                    <span\r\n                        class=\"block text-xs mt-2 text-slate-500 line-through\"\r\n                    >\r\n                        Bs. {{ parseFloat(product.price).toFixed(2) }} c/u\r\n                    </span>\r\n                    <span class=\"block text-sm mt-2\">\r\n                        Bs.\r\n                        {{\r\n                            parseFloat(\r\n                                product.price *\r\n                                    ((100 - product.discounts[0].percentage) /\r\n                                        100)\r\n                            ).toFixed(2)\r\n                        }}\r\n                        c/u\r\n                    </span>\r\n                </template>\r\n                <span v-else class=\"block text-sm mt-2\">\r\n                    Bs. {{ parseFloat(product.price).toFixed(2) }} c/u\r\n                </span>\r\n            </div>\r\n            <div class=\"px-4\">\r\n                <div class=\"flex justify-center\">\r\n                    <button\r\n                        type=\"button\"\r\n                        class=\"\r\n                            w-12\r\n                            h-12\r\n                            p-2\r\n                            rounded-full\r\n                            mr-4\r\n                            text-2xl\r\n                            bg-slate-200\r\n                        \"\r\n                        @click=\"\r\n                            changeProductQuantity({\r\n                                productId: product.id,\r\n                                purchaseQuantity: product.purchase_quantity - 1,\r\n                            })\r\n                        \"\r\n                    >\r\n                        -\r\n                    </button>\r\n                    <span\r\n                        class=\"\r\n                            inline-block\r\n                            w-12\r\n                            h-12\r\n                            p-2\r\n                            text-center text-lg\r\n                            bg-slate-100\r\n                            text-slate-600\r\n                        \"\r\n                        >{{ product.purchase_quantity }}</span\r\n                    >\r\n                    <button\r\n                        type=\"button\"\r\n                        class=\"\r\n                            w-12\r\n                            h-12\r\n                            p-2\r\n                            rounded-full\r\n                            ml-4\r\n                            text-2xl\r\n                            bg-slate-200\r\n                        \"\r\n                        @click=\"\r\n                            changeProductQuantity({\r\n                                productId: product.id,\r\n                                purchaseQuantity: product.purchase_quantity + 1,\r\n                            })\r\n                        \"\r\n                    >\r\n                        +\r\n                    </button>\r\n                </div>\r\n                <div class=\"text-sm mt-2 font-medium\">\r\n                    Bs.\r\n                    {{\r\n                        parseFloat(\r\n                            product.price * product.purchase_quantity\r\n                        ).toFixed(2)\r\n                    }}\r\n                </div>\r\n            </div>\r\n            <div class=\"flex items-start\">\r\n                <button\r\n                    type=\"button\"\r\n                    class=\"\r\n                        w-8\r\n                        h-8\r\n                        rounded-full\r\n                        text-lg\r\n                        border-2 border-[#ff8367]\r\n                        text-[#ff8367]\r\n                    \"\r\n                    @click=\"deleteProduct(product.id)\"\r\n                >\r\n                    &times;\r\n                </button>\r\n            </div>\r\n        </li> ")];
     }),
     _: 1
     /* STABLE */
 
-  }), $data.products.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_18, "Bs. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.subtotal), 1
+  }), $data.products.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_3, "Bs. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.subtotal), 1
   /* TEXT */
-  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "w-full py-2 px-4 bg-[#4bc7b2] hover:bg-[#348A7B] text-white rounded-full uppercase",
     type: "submit",
     value: "Comprar",
-    onClick: _cache[0] || (_cache[0] = function () {
+    onClick: _cache[2] || (_cache[2] = function () {
       return $options.submitPurchase && $options.submitPurchase.apply($options, arguments);
     })
   })])], 64
   /* STABLE_FRAGMENT */
   );
 }
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=template&id=39b7bd3e":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=template&id=39b7bd3e ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "flex justify-between items-center py-4 border-b-2 border-b-slate-200"
+};
+var _hoisted_2 = ["name", "value"];
+var _hoisted_3 = ["name", "value"];
+var _hoisted_4 = {
+  "class": "w-16 h-16 p-2"
+};
+var _hoisted_5 = ["src", "alt"];
+var _hoisted_6 = {
+  "class": "w-[340px]"
+};
+var _hoisted_7 = {
+  "class": "uppercase block"
+};
+var _hoisted_8 = {
+  "class": "block text-xs mt-2 text-slate-500 line-through"
+};
+var _hoisted_9 = {
+  "class": "block text-sm mt-2"
+};
+var _hoisted_10 = {
+  key: 1,
+  "class": "block text-sm mt-2"
+};
+var _hoisted_11 = {
+  "class": "px-4"
+};
+var _hoisted_12 = {
+  "class": "flex justify-center"
+};
+var _hoisted_13 = {
+  "class": "inline-block w-12 h-12 p-2 text-center text-lg bg-slate-100 text-slate-600"
+};
+var _hoisted_14 = {
+  "class": "text-sm mt-2 font-medium"
+};
+var _hoisted_15 = {
+  "class": "flex items-start"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "hidden",
+    name: "products[".concat($props.index, "][id]"),
+    value: $props.product.id
+  }, null, 8
+  /* PROPS */
+  , _hoisted_2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "hidden",
+    name: "products[".concat($props.index, "][purchase_quantity]"),
+    value: $props.product.purchase_quantity
+  }, null, 8
+  /* PROPS */
+  , _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: $options.sourceImage,
+    alt: $props.product.name
+  }, null, 8
+  /* PROPS */
+  , _hoisted_5)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.product.name), 1
+  /* TEXT */
+  ), $props.product.discounts.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 0
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, " Bs. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(parseFloat($props.product.price).toFixed(2)) + " c/u ", 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_9, " Bs. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(parseFloat(_ctx.discount).toFixed(2)) + " c/u ", 1
+  /* TEXT */
+  )], 64
+  /* STABLE_FRAGMENT */
+  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_10, " Bs. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(parseFloat($props.product.price).toFixed(2)) + " c/u ", 1
+  /* TEXT */
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": "w-12 h-12 p-2 rounded-full mr-4 text-2xl bg-slate-200",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$emit('changeProductQuantity', {
+        productId: $props.product.id,
+        purchaseQuantity: $props.product.purchase_quantity - 1
+      });
+    })
+  }, " - "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.product.purchase_quantity), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": "w-12 h-12 p-2 rounded-full ml-4 text-2xl bg-slate-200",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.$emit('changeProductQuantity', {
+        productId: $props.product.id,
+        purchaseQuantity: $props.product.purchase_quantity + 1
+      });
+    })
+  }, " + ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, "Bs. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.totalPrice), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": "w-8 h-8 rounded-full text-lg border-2 border-[#ff8367] text-[#ff8367]",
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return _ctx.$emit('deleteProduct', $props.product.id);
+    })
+  }, " × ")])]);
+}
+
+/***/ }),
+
+/***/ "./resources/js/vue/mixins/cart-item-mixin.js":
+/*!****************************************************!*\
+  !*** ./resources/js/vue/mixins/cart-item-mixin.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  computed: {
+    discount: function discount() {
+      return this.product.price * ((100 - this.product.discounts[0].percentage) / 100);
+    },
+    totalPrice: function totalPrice() {
+      var price = this.product.discounts.length ? this.discount : this.product.price;
+      return parseFloat(price * this.product.purchase_quantity).toFixed(2);
+    }
+  }
+});
 
 /***/ }),
 
@@ -19661,6 +19768,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     subtotal: function subtotal() {
       var subtotal = this.products.reduce(function (previousValue, currentValue) {
+        if (currentValue.discounts.length) {
+          return previousValue + currentValue.purchase_quantity * (currentValue.price * ((100 - currentValue.discounts[0].percentage) / 100));
+        }
+
         return previousValue + currentValue.purchase_quantity * currentValue.price;
       }, 0);
       return parseFloat(subtotal).toFixed(2);
@@ -19718,6 +19829,33 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/vue/purchases/FieldFormPurchaseItem.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/vue/purchases/FieldFormPurchaseItem.vue ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _FieldFormPurchaseItem_vue_vue_type_template_id_39b7bd3e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FieldFormPurchaseItem.vue?vue&type=template&id=39b7bd3e */ "./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=template&id=39b7bd3e");
+/* harmony import */ var _FieldFormPurchaseItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FieldFormPurchaseItem.vue?vue&type=script&lang=js */ "./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=script&lang=js");
+/* harmony import */ var D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_FieldFormPurchaseItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_FieldFormPurchaseItem_vue_vue_type_template_id_39b7bd3e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/purchases/FieldFormPurchaseItem.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/vue/purchases/FieldFormPurchase.vue?vue&type=script&lang=js":
 /*!**********************************************************************************!*\
   !*** ./resources/js/vue/purchases/FieldFormPurchase.vue?vue&type=script&lang=js ***!
@@ -19733,6 +19871,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=script&lang=js":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FieldFormPurchaseItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FieldFormPurchaseItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./FieldFormPurchaseItem.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/vue/purchases/FieldFormPurchase.vue?vue&type=template&id=ed3fddea":
 /*!****************************************************************************************!*\
   !*** ./resources/js/vue/purchases/FieldFormPurchase.vue?vue&type=template&id=ed3fddea ***!
@@ -19744,6 +19897,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FieldFormPurchase_vue_vue_type_template_id_ed3fddea__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FieldFormPurchase_vue_vue_type_template_id_ed3fddea__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./FieldFormPurchase.vue?vue&type=template&id=ed3fddea */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/vue/purchases/FieldFormPurchase.vue?vue&type=template&id=ed3fddea");
+
+
+/***/ }),
+
+/***/ "./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=template&id=39b7bd3e":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=template&id=39b7bd3e ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FieldFormPurchaseItem_vue_vue_type_template_id_39b7bd3e__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FieldFormPurchaseItem_vue_vue_type_template_id_39b7bd3e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./FieldFormPurchaseItem.vue?vue&type=template&id=39b7bd3e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=template&id=39b7bd3e");
 
 
 /***/ }),

@@ -16,7 +16,7 @@ createApp({
         this.products = JSON.parse(localStorage.getItem('products')) || [];
     },
     methods: {
-        addToShoppingCart(event, { id, name, price, url_image }) {
+        addToShoppingCart(event, { id, name, price, url_image, discounts }) {
             let index = this.products.findIndex((product) => {
                 return product.id == id;
             });
@@ -24,13 +24,16 @@ createApp({
             if (index != -1) {
                 this.products[index].purchase_quantity++;
             } else {
-                this.products.push({
+                const product = {
                     id,
                     name,
                     price,
                     url_image,
                     purchase_quantity: 1,
-                });
+                    discounts,
+                };
+
+                this.products.push(product);
             }
 
             let $button = event.currentTarget;

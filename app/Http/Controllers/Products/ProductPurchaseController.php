@@ -31,7 +31,7 @@ class ProductPurchaseController extends Controller
 
         $purchaseQuantities = $products->pluck('purchase_quantity');
 
-        $products = Product::with('category')->whereIn('id', $productsIds)->get()
+        $products = Product::with(['category', 'discounts'])->whereIn('id', $productsIds)->get()
             ->map(function ($product, $index) use ($purchaseQuantities) {
                 return Arr::add($product, 'purchase_quantity', intval($purchaseQuantities[$index]));
             });

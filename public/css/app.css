@@ -1315,6 +1315,9 @@ select {
 .fill-current {
   fill: currentColor;
 }
+.fill-\[\#348a7b\] {
+  fill: #348a7b;
+}
 .p-4 {
   padding: 1rem;
 }
@@ -2046,12 +2049,12 @@ html {
     margin-bottom: 0px;
   }
 
-  .lg\:h-12 {
-    height: 3rem;
-  }
-
   .lg\:h-6 {
     height: 1.5rem;
+  }
+
+  .lg\:h-12 {
+    height: 3rem;
   }
 
   .lg\:w-1\/4 {
@@ -2070,12 +2073,12 @@ html {
     width: 80%;
   }
 
-  .lg\:w-12 {
-    width: 3rem;
-  }
-
   .lg\:w-6 {
     width: 1.5rem;
+  }
+
+  .lg\:w-12 {
+    width: 3rem;
   }
 
   .lg\:p-\[2px\] {

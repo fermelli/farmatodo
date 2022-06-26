@@ -36,9 +36,22 @@ export default {
         },
         subtotal() {
             let subtotal = this.products.reduce(
-                (previousValue, currentValue) =>
-                    previousValue +
-                    currentValue.purchase_quantity * currentValue.price,
+                (previousValue, currentValue) => {
+                    if (currentValue.discounts.length) {
+                        return (
+                            previousValue +
+                            currentValue.purchase_quantity *
+                                (currentValue.price *
+                                    ((100 -
+                                        currentValue.discounts[0].percentage) /
+                                        100))
+                        );
+                    }
+                    return (
+                        previousValue +
+                        currentValue.purchase_quantity * currentValue.price
+                    );
+                },
                 0
             );
             return parseFloat(subtotal).toFixed(2);
