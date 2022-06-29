@@ -67,6 +67,7 @@ class ReportTest extends TestCase
         $purchases = Purchase::factory()->count(5)->for($user)
             ->hasAttached(Product::all()->random(3), [
                 'quantity' => 3,
+                'price' => 100,
             ])->create([
                 'created_at' => '2022-05-02',
                 'updated_at' => '2022-05-02',

@@ -28,7 +28,7 @@ class PurchaseTest extends TestCase
             ->for(Category::all()->random())->create();
 
         $purchase = Purchase::factory()->for($user)
-            ->hasAttached($products, ['quantity' => 1])->create();
+            ->hasAttached($products, ['quantity' => 1, 'price' => 100])->create();
 
         $response = $this->actingAs($user)->get(
             route('purchases.show', $purchase->id)
@@ -52,7 +52,7 @@ class PurchaseTest extends TestCase
             ->for(Category::all()->random())->create();
 
         $purchase = Purchase::factory()->for($otherUser)
-            ->hasAttached($products, ['quantity' => 1])->create();
+            ->hasAttached($products, ['quantity' => 1, 'price' => 100])->create();
 
         $response = $this->actingAs($user)->get(
             route('purchases.show', $purchase->id)
@@ -100,7 +100,7 @@ class PurchaseTest extends TestCase
             ->for(Category::all()->random())->create();
 
         $purchases = Purchase::factory()->count(5)->for($user)
-            ->hasAttached($products, ['quantity' => 1])->create();
+            ->hasAttached($products, ['quantity' => 1, 'price' => 100])->create();
 
         $response = $this->actingAs($user)->get(route('purchases.all'));
 
