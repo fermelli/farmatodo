@@ -26,7 +26,7 @@ class StoreDiscountRequest extends FormRequest
         return [
             'name' => 'required|max:64',
             'percentage' => 'required|integer|min:1|max:15',
-            'start_date' => 'date|after:today',
+            'start_date' => 'date|after_or_equal:today',
             'end_date' => 'date|after_or_equal:start_date',
             'products' => 'required|array',
             'products.*.id' => ['required', 'exists:products,id'],

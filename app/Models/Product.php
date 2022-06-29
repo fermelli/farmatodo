@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,12 +24,23 @@ class Product extends Model
     {
         return $this->belongsToMany(Purchase::class)
             ->as('detail')
-            ->withPivot(['quantity'])
+            ->withPivot([
+                'quantity',
+                'price',
+                'discount_id',
+            ])
             ->withTimestamps();
     }
 
     public function discounts()
     {
         return $this->belongsToMany(Discount::class);
+    }
+
+    public function scopeSearchBy(Builder $query, $q)
+    {
+        return $query->where('name', 'LIKE', "%$q%")
+            ->orWhere('type', 'LIKE', "%$q%")
+            ->orWhere('brand', 'LIKE', "%$q%");
     }
 }

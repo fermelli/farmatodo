@@ -1,8 +1,12 @@
 <script>
 import cartMixin from './../mixins/cart-mixin';
+import FieldFormPurchaseItem from './FieldFormPurchaseItem.vue';
 
 export default {
     name: 'FieldFormPurchase',
+    components: {
+        FieldFormPurchaseItem,
+    },
     mixins: [cartMixin],
     props: {
         validateProducts: {
@@ -32,10 +36,27 @@ export default {
 
 <template>
     <transition-group name="list" tag="ul" appear>
-        <li
+        <field-form-purchase-item
             v-for="(product, index) in products"
             :key="product.id"
-            class="flex justify-between items-center py-4 border-b-2 border-b-slate-200"
+            :product="product"
+            :index="index"
+            :url-default-image="urlDefaultImage"
+            @change-product-quantity="
+                (payload) => changeProductQuantity(payload)
+            "
+            @delete-product="(payload) => deleteProduct(payload)"
+        />
+        <!-- <li
+            v-for="(product, index) in products"
+            :key="product.id"
+            class="
+                flex
+                justify-between
+                items-center
+                py-4
+                border-b-2 border-b-slate-200
+            "
         >
             <input
                 type="hidden"
@@ -52,7 +73,25 @@ export default {
             </div>
             <div class="w-[340px]">
                 <span class="uppercase block">{{ product.name }}</span>
-                <span class="block text-sm mt-2">
+                <template v-if="product.discounts.length">
+                    <span
+                        class="block text-xs mt-2 text-slate-500 line-through"
+                    >
+                        Bs. {{ parseFloat(product.price).toFixed(2) }} c/u
+                    </span>
+                    <span class="block text-sm mt-2">
+                        Bs.
+                        {{
+                            parseFloat(
+                                product.price *
+                                    ((100 - product.discounts[0].percentage) /
+                                        100)
+                            ).toFixed(2)
+                        }}
+                        c/u
+                    </span>
+                </template>
+                <span v-else class="block text-sm mt-2">
                     Bs. {{ parseFloat(product.price).toFixed(2) }} c/u
                 </span>
             </div>
@@ -60,7 +99,15 @@ export default {
                 <div class="flex justify-center">
                     <button
                         type="button"
-                        class="w-12 h-12 p-2 rounded-full mr-4 text-2xl bg-slate-200"
+                        class="
+                            w-12
+                            h-12
+                            p-2
+                            rounded-full
+                            mr-4
+                            text-2xl
+                            bg-slate-200
+                        "
                         @click="
                             changeProductQuantity({
                                 productId: product.id,
@@ -71,12 +118,28 @@ export default {
                         -
                     </button>
                     <span
-                        class="inline-block w-12 h-12 p-2 text-center text-lg bg-slate-100 text-slate-600"
+                        class="
+                            inline-block
+                            w-12
+                            h-12
+                            p-2
+                            text-center text-lg
+                            bg-slate-100
+                            text-slate-600
+                        "
                         >{{ product.purchase_quantity }}</span
                     >
                     <button
                         type="button"
-                        class="w-12 h-12 p-2 rounded-full ml-4 text-2xl bg-slate-200"
+                        class="
+                            w-12
+                            h-12
+                            p-2
+                            rounded-full
+                            ml-4
+                            text-2xl
+                            bg-slate-200
+                        "
                         @click="
                             changeProductQuantity({
                                 productId: product.id,
@@ -99,13 +162,20 @@ export default {
             <div class="flex items-start">
                 <button
                     type="button"
-                    class="w-8 h-8 rounded-full text-lg border-2 border-[#ff8367] text-[#ff8367]"
+                    class="
+                        w-8
+                        h-8
+                        rounded-full
+                        text-lg
+                        border-2 border-[#ff8367]
+                        text-[#ff8367]
+                    "
                     @click="deleteProduct(product.id)"
                 >
                     &times;
                 </button>
             </div>
-        </li>
+        </li> -->
     </transition-group>
 
     <div v-if="products.length">
@@ -115,7 +185,16 @@ export default {
 
     <div class="py-4">
         <input
-            class="w-full py-2 px-4 bg-[#4bc7b2] hover:bg-[#348A7B] text-white rounded-full uppercase"
+            class="
+                w-full
+                py-2
+                px-4
+                bg-[#4bc7b2]
+                hover:bg-[#348A7B]
+                text-white
+                rounded-full
+                uppercase
+            "
             type="submit"
             value="Comprar"
             @click="submitPurchase"

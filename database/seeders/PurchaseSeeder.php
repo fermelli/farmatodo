@@ -26,7 +26,10 @@ class PurchaseSeeder extends Seeder
                 $purchase->save();
 
                 $products->random(rand(1, 5))->each(function ($product) use ($purchase) {
-                    $purchase->products()->attach($product->id, ['quantity' => rand(1, 5)]);
+                    $purchase->products()->attach($product->id, [
+                        'quantity' => rand(1, 5),
+                        'price' => $product->price,
+                    ]);
                 });
             });
     }

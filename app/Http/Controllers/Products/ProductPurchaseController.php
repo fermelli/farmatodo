@@ -31,7 +31,7 @@ class ProductPurchaseController extends Controller
 
         $purchaseQuantities = $products->pluck('purchase_quantity');
 
-        $products = Product::with('category')->whereIn('id', $productsIds)->get()
+        $products = Product::with(['category', 'discounts'])->whereIn('id', $productsIds)->get()
             ->map(function ($product, $index) use ($purchaseQuantities) {
                 return Arr::add($product, 'purchase_quantity', intval($purchaseQuantities[$index]));
             });
@@ -56,7 +56,9 @@ class ProductPurchaseController extends Controller
 
             $purchaseQuantities = $products->pluck('purchase_quantity');
 
-            $productsToPurchase = Product::whereIn('id', $productsIds)->get();
+            $productsToPurchase = Product::with(['discounts' => function ($query) {
+                $query->activeAndInForce();
+            }])->whereIn('id', $productsIds)->get();
 
             $purchase = null;
 
@@ -68,7 +70,16 @@ class ProductPurchaseController extends Controller
                 $purchase->save();
 
                 $productsToPurchase->each(function ($productToPurchase, $index) use ($purchase, $purchaseQuantities) {
-                    $purchase->products()->attach($productToPurchase->id, ['quantity' => $purchaseQuantities[$index]]);
+                    $hasDiscount = count($productToPurchase->discounts) > 0;
+                    $discount = $productToPurchase->discounts->get(0);
+
+                    $purchase->products()->attach($productToPurchase->id, [
+                        'quantity' => $purchaseQuantities[$index],
+                        'price' => $hasDiscount
+                            ? $productToPurchase->price * ((100 - $discount->percentage) / 100)
+                            : $productToPurchase->price,
+                        'discount_id' => $hasDiscount ? $discount->id : null,
+                    ]);
                 });
 
                 DB::commit();

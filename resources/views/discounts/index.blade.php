@@ -46,14 +46,14 @@
                                     <td>
                                         <span class="inline-block bg-red-700 text-white text-xs px-2 rounded-full">Inactivo</span>
                                         <span class="inline-block bg-slate-700 text-white text-xs px-2 rounded-full">
-                                            {{ today() < $discount->end_date ? 'Vigente' : 'No vigente' }}
+                                            {{ $discount->end_date >= now()->format('Y-m-d') ? 'Vigente' : 'No vigente' }}
                                         </span>
                                     </td>
                                 @else
                                     <td>
                                         <span class="inline-block bg-green-700 text-white text-xs px-2 rounded-full">Activo</span>
                                         <span class="inline-block bg-slate-700 text-white text-xs px-2 rounded-full">
-                                            {{ today() < $discount->end_date ? 'Vigente' : 'No vigente' }}
+                                            {{ $discount->end_date >= now()->format('Y-m-d') ? 'Vigente' : 'No vigente' }}
                                         </span>
                                     </td>
                                 @endif
@@ -61,7 +61,7 @@
                                     
                                     <form action="{{ $discount->deleted_at ? route('discounts.restore', $discount->id) : route('discounts.destroy', $discount->id) }}" method="POST">
                                         <a class="inline-block p-2 my-2 border border-blue-700 text-blue-700" href="{{ route('discounts.show', $discount->id) }}">{{  __('Show') }}</a>
-                                        @if (today() < $discount->end_date)
+                                        @if ($discount->end_date >= now()->format('Y-m-d'))
                                             @csrf
                                             @if (!isset($discount->deleted_at))                                                
                                                 @method('DELETE')
