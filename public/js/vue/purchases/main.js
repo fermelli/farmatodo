@@ -19814,13 +19814,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _FieldFormPurchase_vue_vue_type_template_id_ed3fddea__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FieldFormPurchase.vue?vue&type=template&id=ed3fddea */ "./resources/js/vue/purchases/FieldFormPurchase.vue?vue&type=template&id=ed3fddea");
 /* harmony import */ var _FieldFormPurchase_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FieldFormPurchase.vue?vue&type=script&lang=js */ "./resources/js/vue/purchases/FieldFormPurchase.vue?vue&type=script&lang=js");
-/* harmony import */ var D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_FieldFormPurchase_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_FieldFormPurchase_vue_vue_type_template_id_ed3fddea__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/purchases/FieldFormPurchase.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_FieldFormPurchase_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_FieldFormPurchase_vue_vue_type_template_id_ed3fddea__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/purchases/FieldFormPurchase.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -19841,13 +19841,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _FieldFormPurchaseItem_vue_vue_type_template_id_39b7bd3e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FieldFormPurchaseItem.vue?vue&type=template&id=39b7bd3e */ "./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=template&id=39b7bd3e");
 /* harmony import */ var _FieldFormPurchaseItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FieldFormPurchaseItem.vue?vue&type=script&lang=js */ "./resources/js/vue/purchases/FieldFormPurchaseItem.vue?vue&type=script&lang=js");
-/* harmony import */ var D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_FieldFormPurchaseItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_FieldFormPurchaseItem_vue_vue_type_template_id_39b7bd3e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/purchases/FieldFormPurchaseItem.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_FieldFormPurchaseItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_FieldFormPurchaseItem_vue_vue_type_template_id_39b7bd3e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/purchases/FieldFormPurchaseItem.vue"]])
 /* hot reload */
 if (false) {}
 

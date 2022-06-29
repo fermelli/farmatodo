@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category')->latest()->paginate(5);
+        $products = Product::where('is_active', true)->with('category')->latest()->paginate(5);
 
         return view('products.index', compact('products'));
     }
@@ -108,7 +108,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
+        $product->is_active = false;
+        $product->save();
 
         return redirect()->route('products.index')
             ->with('success', 'Product deleted successfully.');
@@ -143,7 +144,7 @@ class ProductController extends Controller
             return $inForceDiscount->products;
         })->pluck('id');
 
-        $products = Product::whereNotIn('id', $productsIds)->latest()->paginate($size);
+        $products = Product::where('is_active', true)->whereNotIn('id', $productsIds)->latest()->paginate($size);
 
         return $products;
     }
