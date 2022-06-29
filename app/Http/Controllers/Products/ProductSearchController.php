@@ -40,7 +40,7 @@ class ProductSearchController extends Controller
 
         if ($selectedCategories->count() > 0) {
             $productsByCategory = $selectedCategories->mapWithKeys(function ($category) use ($search) {
-                return [$category['name'] => Product::with(['discounts' => function ($query) {
+                return [$category['name'] => Product::where('is_active', true)->with(['discounts' => function ($query) {
                     $query->activeAndInForce();
                 }])->where('category_id', $category->id)
                     ->where(function ($query) use ($search) {
@@ -55,7 +55,7 @@ class ProductSearchController extends Controller
             ]);
         }
 
-        $products = Product::with(['discounts' => function ($query) {
+        $products = Product::where('is_active', true)->with(['discounts' => function ($query) {
             $query->activeAndInForce();
         }])->searchBy($search)
             ->with('category')->paginate(20);
