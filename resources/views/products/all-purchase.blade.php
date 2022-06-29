@@ -30,7 +30,7 @@
                                     @foreach ($purchase->products as $product)
                                         @php
                                             $totalQuantity += $product->detail->quantity;
-                                            $total += $product->detail->quantity * $product->price;
+                                            $total += $product->detail->quantity * $product->detail->price;
                                         @endphp
                                     @endforeach
                                     <td class="text-right">{{ $totalQuantity }}</td>

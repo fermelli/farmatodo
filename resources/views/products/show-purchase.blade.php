@@ -35,8 +35,10 @@
                                     <th>#</th>
                                     <th>{{ __('Name') }}</th>
                                     <th>{{ __('Brand') }}</th>
-                                    <th>{{ __('Price') }}</th>
                                     <th>{{ __('Cantidad comprada') }}</th>
+                                    <th>{{ __('Price') }}</th>
+                                    <th>{{ __('Descuento') }}</th>
+                                    <th>{{ __('Precio final') }}</th>
                                     <th>{{ __('Subtotal') }}</th>
                                 </tr>
                                 @foreach ($purchase->products as $product)
@@ -44,16 +46,18 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->brand }}</td>
-                                    <td class="text-right">{{ $product->price }}</td>
                                     <td class="text-right">{{ $product->detail->quantity }}</td>
-                                    <td class="text-right">{{ $product->price * $product->detail->quantity }}</td>
+                                    <td class="text-right">{{ $product->price }}</td>
+                                    <td class="text-right">{{ $product->detail->discount_id ? ($product->price - $product->detail->price) : '-' }}</td>
+                                    <td class="text-right">{{ $product->detail->price }}</td>
+                                    <td class="text-right">{{ $product->detail->price * $product->detail->quantity }}</td>
                                 </tr>
                                 @php
-                                    $total += $product->price * $product->detail->quantity
+                                    $total += $product->detail->price * $product->detail->quantity
                                 @endphp
                                 @endforeach
                                 <tr>
-                                    <th colspan="5">Total</th>
+                                    <th colspan="7">Total</th>
                                     <td><span class="text-xl font-bold">{{ $total }}</span></td>
                                 </tr>
                             </table>

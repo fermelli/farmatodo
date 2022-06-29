@@ -24,7 +24,11 @@ class Product extends Model
     {
         return $this->belongsToMany(Purchase::class)
             ->as('detail')
-            ->withPivot(['quantity'])
+            ->withPivot([
+                'quantity',
+                'price',
+                'discount_id',
+            ])
             ->withTimestamps();
     }
 
