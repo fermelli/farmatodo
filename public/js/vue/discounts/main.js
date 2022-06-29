@@ -22075,13 +22075,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _PaginationButtons_vue_vue_type_template_id_36bc1095__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PaginationButtons.vue?vue&type=template&id=36bc1095 */ "./resources/js/vue/components/PaginationButtons.vue?vue&type=template&id=36bc1095");
 /* harmony import */ var _PaginationButtons_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PaginationButtons.vue?vue&type=script&lang=js */ "./resources/js/vue/components/PaginationButtons.vue?vue&type=script&lang=js");
-/* harmony import */ var D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PaginationButtons_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PaginationButtons_vue_vue_type_template_id_36bc1095__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/components/PaginationButtons.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PaginationButtons_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PaginationButtons_vue_vue_type_template_id_36bc1095__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/components/PaginationButtons.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -22103,13 +22103,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _MiniCardProduct_vue_vue_type_template_id_77556834__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MiniCardProduct.vue?vue&type=template&id=77556834 */ "./resources/js/vue/discounts/MiniCardProduct.vue?vue&type=template&id=77556834");
 /* harmony import */ var _MiniCardProduct_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MiniCardProduct.vue?vue&type=script&lang=js */ "./resources/js/vue/discounts/MiniCardProduct.vue?vue&type=script&lang=js");
-/* harmony import */ var D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MiniCardProduct_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MiniCardProduct_vue_vue_type_template_id_77556834__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/discounts/MiniCardProduct.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MiniCardProduct_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MiniCardProduct_vue_vue_type_template_id_77556834__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/discounts/MiniCardProduct.vue"]])
 /* hot reload */
 if (false) {}
 

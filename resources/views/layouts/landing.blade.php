@@ -38,7 +38,9 @@
 
             <div class="flex py-4">
                 <div class="container mx-auto">
-                    <img class="my-4 mx-8" src="{{ asset('images/logo.webp') }}" alt="Logo">
+                    <a href="/">
+                        <img class="my-4 mx-8" src="{{ asset('images/logo.png') }}" alt="Logo">
+                    </a>
                 </div>
             </div>
 
@@ -71,7 +73,9 @@
             <section id="contacto">
                 <div class="flex flex-wrap gap-10 container mx-auto text-[#6F7987]">
                     <div class="md:w-[calc(50%_-_40px)] xl:w-[calc(25%_-_40px)]">
-                        <img class="m-4" src="{{ asset('images/logo.webp') }}" alt="Logo">
+                        <a href="/">
+                            <img class="m-4" src="{{ asset('images/logo.png') }}" alt="Logo">
+                        </a>
                         <p class="text-lg font-light py-8 px-4">Si necesita medicamentos, estamos aquí a su lado. ¡Manténgase seguro y compre en línea!</p>
                     </div>
                     <div class="md:w-[calc(50%_-_40px)] xl:w-[calc(25%_-_40px)]">
