@@ -7,6 +7,13 @@ Aplicación desarrollada para la materia de Calidad de Software (COM450).
 Luis Fernando Salgado Miguez
 Abril Johana Berrios Escalera
 
+## Sobre el desarrollo
+
+A continuación los enlaces a documentos elaborados en el desarrollo:
+
+-   [Backlog de producto](https://docs.google.com/spreadsheets/d/1rZWDaX1RDoly0KbPf8y7MzhEC8ZJ9g1FCluktv_0PSw/edit?usp=sharing)
+-   [Backlog de los Sprints](https://docs.google.com/spreadsheets/d/1og7FDTyo-0ARGZR4pi5ZAQFAsn6mB43uGB-4O1ZCD60/edit?usp=sharing)
+
 ## Instalación
 
 El proyecto esta realizado con [Laravel 9](https://laravel.com/docs/9.x/), por tanto considere cumplir con los [requerimientos](https://laravel.com/docs/9.x/deployment#server-requirements) para instalarlo y ejecutarlo.
