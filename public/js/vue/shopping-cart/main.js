@@ -20367,13 +20367,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ShoppingCart_vue_vue_type_template_id_4bfb864e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ShoppingCart.vue?vue&type=template&id=4bfb864e */ "./resources/js/vue/shopping-cart/ShoppingCart.vue?vue&type=template&id=4bfb864e");
 /* harmony import */ var _ShoppingCart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShoppingCart.vue?vue&type=script&lang=js */ "./resources/js/vue/shopping-cart/ShoppingCart.vue?vue&type=script&lang=js");
-/* harmony import */ var C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ShoppingCart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ShoppingCart_vue_vue_type_template_id_4bfb864e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/shopping-cart/ShoppingCart.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ShoppingCart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ShoppingCart_vue_vue_type_template_id_4bfb864e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/shopping-cart/ShoppingCart.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -20394,13 +20394,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ShoppingCartIcon_vue_vue_type_template_id_6077f072__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ShoppingCartIcon.vue?vue&type=template&id=6077f072 */ "./resources/js/vue/shopping-cart/ShoppingCartIcon.vue?vue&type=template&id=6077f072");
 /* harmony import */ var _ShoppingCartIcon_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShoppingCartIcon.vue?vue&type=script&lang=js */ "./resources/js/vue/shopping-cart/ShoppingCartIcon.vue?vue&type=script&lang=js");
-/* harmony import */ var C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ShoppingCartIcon_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ShoppingCartIcon_vue_vue_type_template_id_6077f072__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/shopping-cart/ShoppingCartIcon.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ShoppingCartIcon_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ShoppingCartIcon_vue_vue_type_template_id_6077f072__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/shopping-cart/ShoppingCartIcon.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -20421,13 +20421,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ShoppingCartItem_vue_vue_type_template_id_5ab95be8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ShoppingCartItem.vue?vue&type=template&id=5ab95be8 */ "./resources/js/vue/shopping-cart/ShoppingCartItem.vue?vue&type=template&id=5ab95be8");
 /* harmony import */ var _ShoppingCartItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShoppingCartItem.vue?vue&type=script&lang=js */ "./resources/js/vue/shopping-cart/ShoppingCartItem.vue?vue&type=script&lang=js");
-/* harmony import */ var C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ShoppingCartItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ShoppingCartItem_vue_vue_type_template_id_5ab95be8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/shopping-cart/ShoppingCartItem.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ShoppingCartItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ShoppingCartItem_vue_vue_type_template_id_5ab95be8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/vue/shopping-cart/ShoppingCartItem.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -20449,7 +20449,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TheModal_vue_vue_type_template_id_d9aa7926_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TheModal.vue?vue&type=template&id=d9aa7926&scoped=true */ "./resources/js/vue/shopping-cart/TheModal.vue?vue&type=template&id=d9aa7926&scoped=true");
 /* harmony import */ var _TheModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TheModal.vue?vue&type=script&lang=js */ "./resources/js/vue/shopping-cart/TheModal.vue?vue&type=script&lang=js");
 /* harmony import */ var _TheModal_vue_vue_type_style_index_0_id_d9aa7926_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TheModal.vue?vue&type=style&index=0&id=d9aa7926&scoped=true&lang=css */ "./resources/js/vue/shopping-cart/TheModal.vue?vue&type=style&index=0&id=d9aa7926&scoped=true&lang=css");
-/* harmony import */ var C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -20457,7 +20457,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_TheModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_TheModal_vue_vue_type_template_id_d9aa7926_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-d9aa7926"],['__file',"resources/js/vue/shopping-cart/TheModal.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Apuntes_1_2022_ciencias_de_la_computacion_COM450_proyectos_farmatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_TheModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_TheModal_vue_vue_type_template_id_d9aa7926_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-d9aa7926"],['__file',"resources/js/vue/shopping-cart/TheModal.vue"]])
 /* hot reload */
 if (false) {}
 
