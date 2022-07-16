@@ -20,3 +20,49 @@
         @apply w-16 h-16 mx-auto animate-spin rounded-full border-4 border-slate-500 border-l-transparent;
     }
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+.animate-add-to-cart {
+    position: relative;
+}
+
+.animate-add-to-cart::before {
+    content: '+1';
+    position: absolute;
+    color: #348a7b;
+    animation: upper 0.7s ease-in-out both;
+}
+
+.animate-add-to-cart svg {
+    transform: scale(1.2);
+    transition: transform ease-in-out 0.7s;
+}
+
+@keyframes upper {
+    0% {
+        opacity: 1;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(0px);
+        color: white;
+    }
+}
+
+/* ANIMATION SHOPPING CART LIST */
+.list-move,
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}

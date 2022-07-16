@@ -1,0 +1,60 @@
+export default {
+    methods: {
+        deleteProduct(productId) {
+            let index = this.products.findIndex((product) => {
+                return product.id == productId;
+            });
+
+            if (index != -1) {
+                this.products.splice(index, 1);
+                localStorage.setItem('products', JSON.stringify(this.products));
+            }
+        },
+        changeProductQuantity({ productId, purchaseQuantity }) {
+            let index = this.products.findIndex((product) => {
+                return product.id == productId;
+            });
+
+            if (index != -1) {
+                if (purchaseQuantity <= 0) {
+                    this.deleteProduct(this.products[index].id);
+                } else {
+                    this.products[index].purchase_quantity = purchaseQuantity;
+                }
+
+                localStorage.setItem('products', JSON.stringify(this.products));
+            }
+        },
+    },
+    computed: {
+        totalProducts() {
+            return this.products.reduce(
+                (previousValue, currentValue) =>
+                    previousValue + parseInt(currentValue.purchase_quantity),
+                0
+            );
+        },
+        subtotal() {
+            let subtotal = this.products.reduce(
+                (previousValue, currentValue) => {
+                    if (currentValue.discounts.length) {
+                        return (
+                            previousValue +
+                            currentValue.purchase_quantity *
+                                (currentValue.price *
+                                    ((100 -
+                                        currentValue.discounts[0].percentage) /
+                                        100))
+                        );
+                    }
+                    return (
+                        previousValue +
+                        currentValue.purchase_quantity * currentValue.price
+                    );
+                },
+                0
+            );
+            return parseFloat(subtotal).toFixed(2);
+        },
+    },
+};

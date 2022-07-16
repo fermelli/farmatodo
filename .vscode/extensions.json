@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "bmewburn.vscode-intelephense-client",
+        "xdebug.php-debug",
+        "xdebug.php-pack",
+        "shevaua.phpcs",
+        "bradlc.vscode-tailwindcss",
+        "octref.vetur",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+    ]
+}

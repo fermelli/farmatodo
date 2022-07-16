@@ -759,5 +759,18 @@
     "Edit product": "Editar producto",
     "Show product": "Mostrar producto",
     "Add New Product": "Agregar nuevo producto",
-    "Create new product": "Crear nuevo producto"
+    "Create new product": "Crear nuevo producto",
+    "Type": "Tipo",
+    "Brand": "Marca",
+    "Price": "Precio",
+    "Quantity": "Cantidad",
+    "Show": "Mostrar",
+    "Back": "Atrás",
+    "Submit": "Enviar",
+    "There were some problems with your input.": "Hubo algunos problemas con los datos de entrada.",
+    "Product created successfully.": "Producto creado con éxito.",
+    "Product updated successfully.": "Producto actualizado con éxito.",
+    "Product deleted successfully.": "Producto eliminado con éxito.",
+    "Category": "Categoria",
+    "Report": "Reporte"
 }

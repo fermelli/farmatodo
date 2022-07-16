@@ -12,41 +12,34 @@
                     <div>
                         <div>
                             <div>
-                                <a class="inline-block px-4 py-2 my-4 bg-slate-600 text-white" href="{{ route('products.index') }}">Back</a>
+                                <a class="inline-block px-4 py-2 my-4 bg-slate-600 text-white" href="{{ route('products.index') }}">{{ __('Back') }}</a>
                             </div>
                         </div>
                     </div>
                     
-                    <div>
-                        <div>
-                            <div>
-                                <strong>Name:</strong>
-                                {{ $product->name }}
-                            </div>
+                    <div class="w-[500px] mx-auto">
+                        <div class="p-12">
+                            <img src="{{ $product->url_image ? asset($product->url_image) : asset('images/image-svgrepo-com.svg') }}" alt="{{ $product->name }}">
                         </div>
                         <div>
-                            <div>
-                                <strong>Type:</strong>
-                                {{ $product->type }}
-                            </div>
+                            <strong>{{ __('Name') }}:</strong>
+                            {{ $product->name }}
                         </div>
                         <div>
-                            <div>
-                                <strong>Brand:</strong>
-                                {{ $product->brand }}
-                            </div>
+                            <strong>{{ __('Type') }}:</strong>
+                            {{ $product->type }}
                         </div>
                         <div>
-                            <div>
-                                <strong>Price:</strong>
-                                {{ $product->price }}
-                            </div>
+                            <strong>{{ __('Brand') }}:</strong>
+                            {{ $product->brand }}
                         </div>
                         <div>
-                            <div>
-                                <strong>Quantity:</strong>
-                                {{ $product->quantity }}
-                            </div>
+                            <strong>{{ __('Price') }}:</strong>
+                            {{ $product->price }}
+                        </div>
+                        <div>
+                            <strong>{{ __('Quantity') }}:</strong>
+                            {{ $product->quantity }}
                         </div>
                     </div>
                 </div>

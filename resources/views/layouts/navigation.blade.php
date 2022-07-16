@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('landing') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
@@ -21,10 +21,25 @@
                         </x-nav-link>
                     @endcan
                     @can('is-super-administrator-or-administrator')
-                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
-                        {{ __('Products') }}
-                    </x-nav-link>
-                @endcan
+                        <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                            {{ __('Products') }}
+                        </x-nav-link>
+                    @endcan
+                    @can('is-user')
+                        <x-nav-link :href="route('purchases.all')" :active="request()->routeIs('purchases.all')">
+                            {{ __('Compras') }}
+                        </x-nav-link>
+                    @endcan
+                    @can('is-super-administrator-or-administrator')
+                        <x-nav-link :href="route('report')" :active="request()->routeIs('report')">
+                            {{ __('Report') }}
+                        </x-nav-link>
+                    @endcan
+                    @can('is-super-administrator-or-administrator')
+                        <x-nav-link :href="route('discounts.index')" :active="request()->routeIs('discounts.index')">
+                            {{ __('Descuentos') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
