@@ -105,6 +105,45 @@ Para ingresar al panel como super-administrador puede ingresar con el usuario: `
 | Admin         | admin@email.com          | No    | Si        | Si      | Si         | No      |
 | User          | user.user@email.com      | No    | No        | No      | No         | Si      |
 
+#### Creación de usuarios
+
+Para la creación de una cuenta nueva se te solicitará verificar tu correo electrónico.
+
+![Captura verificacion de correo electrónico](/public/images/verify-email.png "Captura verificación de correo electrónico")
+
+Para lo cual se debe configurar un servicio de correo electrónico, como Amazon Simple Email Service ([Capa gratuita: 62000 emails enviados gratis cada mes](https://aws.amazon.com/es/ses/pricing/)) que es el que utiliza en el proyecto, con configuraciones parecidas a estas en el archivo `.env.example`:
+
+```.env
+MAIL_MAILER=smtp
+MAIL_HOST=email-smtp.us-east-1.amazonaws.com
+MAIL_PORT=587
+MAIL_USERNAME=AKIAXXXXXXXXXXXXXXX1
+MAIL_PASSWORD=BDr/XxXX1XXxXXXxX2XxxxXXXX+xxXXxX3XXXXXXxxxX
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=correo@email.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+Haciendo posible que le lleguen correo con enlace para verificar su correo electrónico.
+
+![Captura correo electrónico](/public/images/email-sent.png "Captura correo electrónico")
+
+Además podria quitar el middleware `verified` en la declaración de las rutas de la aplicación en el directorio `routes`:
+
+```php
+Route::middleware(['auth', 'verified'])->group(function () {
+    //
+});
+```
+
+```php
+Route::middleware(['auth'])->group(function () {
+    //
+});
+```
+
+O también rellenar el campo `email_verified_at` de tipo timestamp (que por defecto es `NULL`) de la tabla de usuarios (`users`).
+
 ## Estilo de codificación
 
 ### PHP y Laravel
